@@ -1,0 +1,548 @@
+<!-- Content Header (Page header) -->
+<style>
+    button {
+        margin: 2px;
+    }
+</style>
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Curriculum</h1>
+            </div>
+            <!-- <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a routerLink="/usuarios" >Usuarios</a></li>
+            <li class="breadcrumb-item active">Detalhe</li>
+          </ol>
+        </div> -->
+        </div>
+    </div>
+</div>
+
+
+<section class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12">
+
+
+                <div class="card">
+                    <div class="card-header p-2">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item"><a class="nav-link active" href="#carreira"
+                                    data-toggle="tab">Carreira</a>
+                            </li> 
+                            <li class="nav-item"><a class="nav-link " href="#formacao" data-toggle="tab">Formação</a>
+                            </li>
+                        </ul>
+                    </div><!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="tab-content">
+
+                            <div class="tab-pane active" id="carreira">
+                                <!-- The timeline -->
+                                <!-- <button class="btn btn-primary" type="button" 
+                                data-toggle="collapse"  
+                                data-target=".card-footer" 
+                                aria-expanded="false"  >Maximizar / minimizar</button>
+                                <hr> -->
+
+                                <div class="timeline timeline">
+
+                                    <ng-container *ngFor="let empresa of carreira_profisional">
+                                        <div class="time-label">
+                                            <span class={{empresa.cor}}>
+                                                {{empresa.data}}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <i class="fas fa-file-code {{empresa.cor}}"></i>
+                                            <div class="timeline-item">
+                                                <div class="bg-light progress-bar-striped card card-widget widget-user">
+                                                    <div
+                                                        class="widget-user-header disabled {{empresa.cor}}  progress-bar-striped">
+                                                        <h3 class="widget-user-username">{{empresa.ultimoCargo}}</h3>
+                                                        <h3 class="widget-user-desc">{{empresa.nome}}</h3>
+                                                    </div>
+                                                    <div class="widget-user-image ">
+                                                        <img class="img-circle elevation-2 bg-white"
+                                                            src={{empresa.logo}}>
+                                                    </div>
+
+                                                    <div class="card-header ">
+                                                        <div class="card-title ">
+                                                            Detalhes
+                                                        </div>
+                                                        <div class="card-tools">
+                                                            <button type="button" class="btn btn-tool" 
+                                                                data-card-widget="collapse">
+                                                                <i class="fas fa-minus"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer " >
+                                                        <div class="col-12">
+                                                            <div class="timeline timeline ">
+
+                                                                <ng-container *ngFor="let cargo of empresa.cargos">
+                                                                    <div class="time-label">
+                                                                        <span class={{empresa.cor}}>
+                                                                            {{cargo.data}}
+                                                                        </span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <i class="fas fa-file-code {{empresa.cor}}"></i>
+                                                                        <div class="timeline-item">
+                                                                            <div class="card">
+                                                                                <div class="card-header">
+                                                                                    <div class="card-title">
+                                                                                        {{cargo.nome}}
+                                                                                    </div>
+                                                                                    <div class="card-tools">
+                                                                                        <button type="button"
+                                                                                            class="btn btn-tool"
+                                                                                            data-card-widget="collapse">
+                                                                                            <i class="fas fa-minus"></i>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="card-body">
+
+                                                                                    <span
+                                                                                        *ngFor="let atividade of cargo.atividades">
+                                                                                        <b>{{atividade.nome}}</b>
+                                                                                        <br>
+                                                                                        <span
+                                                                                            *ngFor="let detalhe of atividade.detalhes">
+                                                                                            {{detalhe}}
+                                                                                            <br><br>
+                                                                                        </span>
+                                                                                        <hr>
+                                                                                    </span>
+
+                                                                                </div>
+                                                                                <div class="card-footer bg-light">
+                                                                                    <div class="timeline-item">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+
+                                                                                                <div class="card-title">
+                                                                                                    Atividades
+                                                                                                    paralelas
+                                                                                                </div>
+                                                                                                <div class="card-tools">
+                                                                                                    <button
+                                                                                                        type="button"
+                                                                                                        class="btn btn-tool"
+                                                                                                        data-card-widget="collapse">
+                                                                                                        <i
+                                                                                                            class="fas fa-minus"></i>
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <div class="col-12">
+                                                                                                    <div
+                                                                                                        class="timeline timeline">
+
+
+                                                                                                        <ng-container
+                                                                                                            *ngFor="let atividadeGrupo of cargo.atividadesParalelas">
+                                                                                                            <div
+                                                                                                                class="time-label">
+                                                                                                                <span
+                                                                                                                    class={{empresa.cor}}>
+                                                                                                                    {{atividadeGrupo.data}}
+                                                                                                                </span>
+                                                                                                            </div>
+                                                                                                            <div
+                                                                                                                *ngFor="let atividade of atividadeGrupo.atividades">
+                                                                                                                <i
+                                                                                                                    class="{{atividade.icone}} {{empresa.cor}}"></i>
+                                                                                                                <div
+                                                                                                                    class="timeline-item">
+                                                                                                                    <div
+                                                                                                                        class="card">
+                                                                                                                        <div
+                                                                                                                            class="card-header">
+                                                                                                                            {{atividade.nome}}
+                                                                                                                        </div>
+                                                                                                                        <div
+                                                                                                                            class="card-body">
+                                                                                                                            <span
+                                                                                                                                *ngFor="let detalhe of atividade.detalhes">
+                                                                                                                                {{detalhe}}
+                                                                                                                                <br>
+                                                                                                                            </span>
+                                                                                                                        </div>
+
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+
+
+
+                                                                                                        </ng-container>
+
+
+                                                                                                        <div>
+                                                                                                            <i
+                                                                                                                class="fas fa-home bg-gray"></i>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </ng-container>
+
+                                                                <div>
+                                                                    <i class="fas fa-home bg-gray"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+
+
+                                    <!-- <div class="time-label">
+                                        <span class="bg-red">
+                                            DATA
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <i class="fas fa-file-code bg-red"></i>
+                                        <div class="timeline-item">
+                                            <div class="bg-light progress-bar-striped card card-widget widget-user">
+                                                <div class="widget-user-header disabled bg-red  progress-bar-striped">
+                                                    <h3 class="widget-user-username">Ultimo cargo</h3>
+                                                    <h3 class="widget-user-desc">Empresa</h3>
+                                                  </div>
+                                                  <div class="widget-user-image">
+                                                    <img class="img-circle elevation-2" src="https://media.glassdoor.com/sql/827281/benner-solution-squarelogo-1572267053127.png" alt="User Avatar">
+                                                  </div>
+                                                 
+                                                <div class="card-header ">
+                                                    <div class="card-title ">
+                                                        Detalhes
+                                                    </div>
+                                                    <div class="card-tools">
+                                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                          <i class="fas fa-minus"></i>
+                                                        </button>  
+                                                      </div>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <div class="col-12">
+                                                        <div class="timeline timeline ">
+
+                                                            <div class="time-label">
+                                                                <span class="bg-red">
+                                                                    DATA
+                                                                </span>
+                                                            </div>
+                                                            <div>
+                                                                <i class="fas fa-file-code bg-red"></i>
+                                                                <div class="timeline-item">
+                                                                    <div class="card">
+                                                                        <div class="card-header">
+                                                                            <div class="card-title">
+                                                                                Cargo
+                                                                            </div>
+                                                                            <div class="card-tools">
+                                                                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                                                  <i class="fas fa-minus"></i>
+                                                                                </button>  
+                                                                              </div>
+                                                                        </div>
+                                                                        <div class="card-body">Detalhes</div>
+                                                                        <div class="card-footer">
+                                                                            <div class="timeline-item">
+                                                                                <div class="card">
+                                                                                    <div class="card-header">
+                                                                                        
+                                                                                        <div class="card-title">
+                                                                                            Atividades
+                                                                                        paralelas
+                                                                                        </div>
+                                                                                        <div class="card-tools">
+                                                                                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                                                              <i class="fas fa-minus"></i>
+                                                                                            </button>  
+                                                                                          </div>
+                                                                                    </div>
+                                                                                    <div class="card-body">
+                                                                                        <div class="col-12">
+                                                                                            <div
+                                                                                                class="timeline timeline">
+
+                                                                                                <div class="time-label">
+                                                                                                    <span
+                                                                                                        class="bg-red">
+                                                                                                        DATA
+                                                                                                    </span>
+                                                                                                </div>
+                                                                                                <div>
+                                                                                                    <i
+                                                                                                        class="fas fa-file-code bg-red"></i>
+                                                                                                    <div
+                                                                                                        class="timeline-item">
+                                                                                                        <div
+                                                                                                            class="card">
+                                                                                                            <div
+                                                                                                                class="card-header">
+                                                                                                                Atividade
+                                                                                                            </div>
+                                                                                                            <div
+                                                                                                                class="card-body">
+                                                                                                                Detalhes
+                                                                                                            </div>
+
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+
+
+
+                                                                                                <div>
+                                                                                                    <i
+                                                                                                        class="fas fa-home bg-gray"></i>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div>
+                                                                <i class="fas fa-home bg-gray"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+
+
+                                    <div>
+                                        <i class="fas fa-home bg-gray"></i>
+                                    </div>
+                                </div>
+                            </div>
+ 
+
+                            <div class="tab-pane" id="formacao">
+                              
+                                <div class="timeline timeline">
+
+                                    <ng-container *ngFor="let empresa of formacao">
+                                        <div class="time-label">
+                                            <span class={{empresa.cor}}>
+                                                {{empresa.data}}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <i class="fas fa-file-code {{empresa.cor}}"></i>
+                                            <div class="timeline-item">
+                                                <div class="bg-light progress-bar-striped card card-widget widget-user">
+                                                    <div
+                                                        class="widget-user-header disabled {{empresa.cor}}  progress-bar-striped">
+                                                        <h3 class="widget-user-username">{{empresa.ultimoCargo}}</h3>
+                                                        <h3 class="widget-user-desc">{{empresa.nome}}</h3>
+                                                    </div>
+                                                    <div class="widget-user-image ">
+                                                        <img class="img-circle elevation-2 bg-white"
+                                                            src={{empresa.logo}}>
+                                                    </div>
+
+                                                    <div class="card-header ">
+                                                        <div class="card-title ">
+                                                            Detalhes
+                                                        </div>
+                                                        <div class="card-tools">
+                                                            <button type="button" class="btn btn-tool" 
+                                                                data-card-widget="collapse">
+                                                                <i class="fas fa-minus"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer " >
+                                                        <div class="col-12">
+                                                            <div class="timeline timeline ">
+
+                                                                <ng-container *ngFor="let cargo of empresa.cargos">
+                                                                    <div class="time-label">
+                                                                        <span class={{empresa.cor}}>
+                                                                            {{cargo.data}}
+                                                                        </span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <i class="fas fa-file-code {{empresa.cor}}"></i>
+                                                                        <div class="timeline-item">
+                                                                            <div class="card">
+                                                                                <div class="card-header">
+                                                                                    <div class="card-title">
+                                                                                        {{cargo.nome}}
+                                                                                    </div>
+                                                                                    <div class="card-tools">
+                                                                                        <button type="button"
+                                                                                            class="btn btn-tool"
+                                                                                            data-card-widget="collapse">
+                                                                                            <i class="fas fa-minus"></i>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="card-body">
+
+                                                                                    <span
+                                                                                        *ngFor="let atividade of cargo.atividades">
+                                                                                        <b>{{atividade.nome}}</b>
+                                                                                        <br>
+                                                                                        <span
+                                                                                            *ngFor="let detalhe of atividade.detalhes">
+                                                                                            {{detalhe}}
+                                                                                            <br><br>
+                                                                                        </span>
+                                                                                        <hr>
+                                                                                    </span>
+
+                                                                                </div>
+                                                                                <div class="card-footer bg-light">
+                                                                                    <div class="timeline-item">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+
+                                                                                                <div class="card-title">
+                                                                                                    Atividades
+                                                                                                    paralelas
+                                                                                                </div>
+                                                                                                <div class="card-tools">
+                                                                                                    <button
+                                                                                                        type="button"
+                                                                                                        class="btn btn-tool"
+                                                                                                        data-card-widget="collapse">
+                                                                                                        <i
+                                                                                                            class="fas fa-minus"></i>
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="card-body">
+                                                                                                <div class="col-12">
+                                                                                                    <div
+                                                                                                        class="timeline timeline">
+
+
+                                                                                                        <ng-container
+                                                                                                            *ngFor="let atividadeGrupo of cargo.atividadesParalelas">
+                                                                                                            <div
+                                                                                                                class="time-label">
+                                                                                                                <span
+                                                                                                                    class={{empresa.cor}}>
+                                                                                                                    {{atividadeGrupo.data}}
+                                                                                                                </span>
+                                                                                                            </div>
+                                                                                                            <div
+                                                                                                                *ngFor="let atividade of atividadeGrupo.atividades">
+                                                                                                                <i
+                                                                                                                    class="{{atividade.icone}} {{empresa.cor}}"></i>
+                                                                                                                <div
+                                                                                                                    class="timeline-item">
+                                                                                                                    <div
+                                                                                                                        class="card">
+                                                                                                                        <div
+                                                                                                                            class="card-header">
+                                                                                                                            {{atividade.nome}}
+                                                                                                                        </div>
+                                                                                                                        <div
+                                                                                                                            class="card-body">
+                                                                                                                            <span
+                                                                                                                                *ngFor="let detalhe of atividade.detalhes">
+                                                                                                                                {{detalhe}}
+                                                                                                                                <br>
+                                                                                                                            </span>
+                                                                                                                        </div>
+
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+
+
+
+                                                                                                        </ng-container>
+
+
+                                                                                                        <div>
+                                                                                                            <i
+                                                                                                                class="fas fa-home bg-gray"></i>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </ng-container>
+
+                                                                <div>
+                                                                    <i class="fas fa-home bg-gray"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+ 
+
+
+
+                                    <div>
+                                        <i class="fas fa-home bg-gray"></i>
+                                    </div>
+                                </div>
+                            </div>
+                             
+                        </div>
+                        <!-- /.tab-content -->
+                    </div><!-- /.card-body -->
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+
+<script>
+
+    $("#toggle").on(
+        "click",
+        () => {
+           alert("opa")
+        }
+    )
+</script>
