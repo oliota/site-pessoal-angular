@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CvService} from '../cv.service'
 import { Router } from '@angular/router';
 import {Benner, Empresa} from '../cv';
+import { CarouselModule, WavesModule } from 'angular-bootstrap-md'
 
 @Component({
   selector: 'app-cv',
@@ -22,12 +23,12 @@ export class CvComponent implements OnInit {
     ngOnInit() {
       this.reloadData();
     }
-  
+
     reloadData() {
       this.cargos_benner = this.cvService.getCargosBenner();
       this.carreira_profisional = this.cvService.getCarreiraProfissional();
       this.formacao = this.cvService.getFormacao();
     }
-  
+
 
 }

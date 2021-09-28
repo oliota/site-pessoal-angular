@@ -31,12 +31,12 @@ export class CursoDetalheComponent implements OnInit {
 
   sub!: Subscription;
   ngOnInit() {
-    this.sub=this._Activatedroute.paramMap.subscribe(params => { 
+    this.sub=this._Activatedroute.paramMap.subscribe(params => {
       console.log(params);
-      this.curso = params.get('curso')?.toString(); 
-      this.id = params.get('id')?.toString();   
+      this.curso = params.get('curso')?.toString();
+      this.id = params.get('id')?.toString();
 
-      
+
       this.cursoService.getCursoDetalhe(this.id).forEach(retorno => {
 
          let json = JSON.stringify(retorno)
@@ -61,3 +61,6 @@ export class CursoDetalheComponent implements OnInit {
   }
 
 }
+
+
+

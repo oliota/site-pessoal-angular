@@ -9,13 +9,13 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-      
+
     </ul>
- 
- 
+
+
   </nav>
   <!-- /.navbar -->
- 
+
   <aside class="main-sidebar sidebar-light progress-bar-striped bg-light elevation-4 ">
     <!-- Brand Logo -->
     <a routerLink="inicio" class="brand-link">
@@ -25,7 +25,7 @@
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar "> 
+    <div class="sidebar ">
       <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="assets/img/oliota.jpg" class="img-circle elevation-2" alt="User Image">
@@ -38,30 +38,30 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2 ">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-     
+
           <li class="nav-item">
-            <a routerLink="inicio" class="nav-link"> 
+            <a routerLink="inicio" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
-                Início 
+                Início
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a routerLink="cv" class="nav-link"> 
+            <a routerLink="cv" class="nav-link">
               <i class="nav-icon fas fa-briefcase"></i>
               <p>
-                CV    
+                CV
                 <span class="right badge badge-info">{{empresas}}</span>
               </p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a routerLink="cursos" class="nav-link"> 
+            <a routerLink="cursos" class="nav-link">
               <i class="nav-icon fas fa-graduation-cap"></i>
               <p>
-                Cursos
+                Cursos ministrados
                 <span class="right badge badge-info">{{cursos}}</span>
               </p>
             </a>
@@ -75,20 +75,20 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-  
+
     <section class="content">
       <div class="container-fluid">
-  
+
 
         <div class="row">
-          <div class="col-md-12"> 
-             
-                  <router-outlet></router-outlet> 
-                   
-          </div> 
-        </div> 
- 
-      </div> 
+          <div class="col-md-12">
+
+                  <router-outlet></router-outlet>
+
+          </div>
+        </div>
+
+      </div>
     </section>
     <!-- /.content -->
   </div>
@@ -108,11 +108,3 @@
 <!-- ./wrapper -->
 
 
-<script>
-  $("#teste").on(
-    "click",
-    ()=>{
-      alert("opa")
-    }
-  );
-</script>

@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Cursos</h1>
+                <h1>Cursos ministrados</h1>
             </div>
 
         </div>
@@ -24,18 +24,18 @@
                         <th style="width: 20%">
                             Nome
                         </th>
-              
+
                         <th>
                             Progresso
                         </th>
                         <th style="width: 8%" class="text-center">
                             Situação
                         </th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
-                
+
 
                     <tr *ngFor="let curso of cursos.slice().reverse() ; let i = index">
                         <td>
@@ -43,29 +43,29 @@
                         </td>
                         <td>
                             <a [routerLink]="['/curso_detalhe',curso.link,curso.id]" >
-                                {{curso.nome}}  
+                                {{curso.nome}}
                             </a>
                             <br>
-                            <small> 
-                                {{curso.datas[0].data | date:'dd/MM/yyyy'}} até {{curso.datas[curso.datas.length-1].data | date:'dd/MM/yyyy'}} 
+                            <small>
+                                {{curso.datas[0].data | date:'dd/MM/yyyy'}} até {{curso.datas[curso.datas.length-1].data | date:'dd/MM/yyyy'}}
                             </small>
                         </td>
-                       
+
                         <td class="project_progress">
                             <div class="progress progress-sm">
                                 <div class="progress-bar bg-{{curso.cor}}" role="progressbar" attr.aria-volumenow={{curso.progresso}}
                                     aria-volumemin="0" aria-volumemax="100" [style.width.%]=curso.progresso >
                                 </div>
-                            </div> 
+                            </div>
                             <small>
-                                  ({{curso.quantidade}} aulas) {{curso.progresso | number : '1.0-0'}}% 
-                                
+                                  ({{curso.quantidade}} aulas) {{curso.progresso | number : '1.0-0'}}%
+
                             </small>
                         </td>
                         <td class="project-state">
                             <span class="badge badge-{{curso.cor}}">{{curso.situacao}}</span>
                         </td>
-                         
+
                     </tr>
 
                 </tbody>

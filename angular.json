@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "7eea065c-66ad-4e2d-8f88-dc766727178b"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -42,7 +45,8 @@
               "node_modules/admin-lte/plugins/raphael/raphael.js",
               "node_modules/admin-lte/plugins/jquery-mapael/jquery.mapael.js",
               "node_modules/admin-lte/plugins/chart.js/Chart.js",
-              "node_modules/admin-lte/dist/js/pages/dashboard2.js"
+              "node_modules/admin-lte/dist/js/pages/dashboard2.js",
+              "node_modules/hammerjs/hammer.min.js"
             ]
           },
           "configurations": {

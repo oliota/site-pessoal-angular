@@ -1,0 +1,14 @@
+/**
+ * @copyright Valor Software
+ * @copyright Angular ng-bootstrap team
+ */
+export class Trigger {
+    constructor(open, close) {
+        this.open = open;
+        this.close = close || open;
+    }
+    isManual() {
+        return this.open === 'manual' || this.close === 'manual';
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidHJpZ2dlci5jbGFzcy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL3Byb2plY3RzL2FuZ3VsYXItYm9vdHN0cmFwLW1kL3NyYy9saWIvZnJlZS91dGlsaXRpZXMvdHJpZ2dlci5jbGFzcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7O0dBR0c7QUFFSCxNQUFNLE9BQU8sT0FBTztJQUlsQixZQUFZLElBQVksRUFBRSxLQUFjO1FBQ3RDLElBQUksQ0FBQyxJQUFJLEdBQUcsSUFBSSxDQUFDO1FBQ2pCLElBQUksQ0FBQyxLQUFLLEdBQUcsS0FBSyxJQUFJLElBQUksQ0FBQztJQUM3QixDQUFDO0lBRUQsUUFBUTtRQUNOLE9BQU8sSUFBSSxDQUFDLElBQUksS0FBSyxRQUFRLElBQUksSUFBSSxDQUFDLEtBQUssS0FBSyxRQUFRLENBQUM7SUFDM0QsQ0FBQztDQUNGIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBAY29weXJpZ2h0IFZhbG9yIFNvZnR3YXJlXG4gKiBAY29weXJpZ2h0IEFuZ3VsYXIgbmctYm9vdHN0cmFwIHRlYW1cbiAqL1xuXG5leHBvcnQgY2xhc3MgVHJpZ2dlciB7XG4gIG9wZW46IHN0cmluZztcbiAgY2xvc2U/OiBhbnk7XG5cbiAgY29uc3RydWN0b3Iob3Blbjogc3RyaW5nLCBjbG9zZT86IHN0cmluZykge1xuICAgIHRoaXMub3BlbiA9IG9wZW47XG4gICAgdGhpcy5jbG9zZSA9IGNsb3NlIHx8IG9wZW47XG4gIH1cblxuICBpc01hbnVhbCgpOiBib29sZWFuIHtcbiAgICByZXR1cm4gdGhpcy5vcGVuID09PSAnbWFudWFsJyB8fCB0aGlzLmNsb3NlID09PSAnbWFudWFsJztcbiAgfVxufVxuIl19

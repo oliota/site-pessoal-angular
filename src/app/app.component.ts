@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
 
     let cursos = this.cursosService.getCursos();
     cursos.forEach(lista => {
-      
+
       let json = JSON.stringify(lista)
       let dado = JSON.parse(json);
       this.cursos=dado.length;

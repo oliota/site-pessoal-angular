@@ -1,13 +1,17 @@
 <br><br>
-
-
+<base target="_blank">
 <div class="timeline timeline">
 
-    <div>
-        <i class="fas fa-home bg-gray"></i>
-    </div>
-    <br><br>
 
+    <div class="time-label">
+      <span class="bg-info">
+          {{detalhe.nome}}
+      </span>
+  </div>
+  <div>
+    <i class="fas fa-home bg-gray"></i>
+</div>
+<br><br>
     <ng-container *ngFor="let aula of detalhe.datas ; let i = index">
 
 
@@ -37,7 +41,7 @@
                                     <div class="card-header">
                                         <div class="card-title">
                                             Resumo
-                                           
+
                                         </div>
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -50,10 +54,8 @@
                                         <span *ngFor="let resumo of aula.resumos ; let j = index">
                                             <b> {{resumo.titulo}}</b>
                                             <br>
-                                            <span>
-                                               <pre>{{resumo.paragrafo}}</pre> 
-                                                
-                                            </span>
+                                            <p [innerHtml]="resumo.paragrafo"></p>
+
                                             <hr>
                                         </span>
 
@@ -90,7 +92,10 @@
                                                                             </b>
                                                                         </div>
                                                                         <div class="card-body">
-                                                                            <pre>{{assunto.paragrafo }}</pre>
+                                                                          <p [innerHtml]="assunto.paragrafo"></p>
+                                                                            <!-- <pre *ngIf="!assunto.paragrafo.startsWith('http') " >{{assunto.paragrafo }} </pre>
+                                                                            <pre *ngIf="assunto.paragrafo.startsWith('http')" ><a href={{assunto.paragrafo}} target="_blank">{{assunto.paragrafo}}</a></pre> -->
+
 
                                                                         </div>
 
@@ -103,7 +108,7 @@
 
 
 
-                                                            <!-- 
+                                                            <!--
                                                             <div>
                                                                 <i class="fas fa-home bg-gray"></i>
                                                             </div> -->
