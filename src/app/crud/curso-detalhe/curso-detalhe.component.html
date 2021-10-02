@@ -1,141 +1,159 @@
-<br><br>
-<base target="_blank">
-<div class="timeline timeline">
-
-
-    <div class="time-label">
-      <span class="bg-info">
-          {{detalhe.nome}}
-      </span>
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <a href="https://www.proway.com.br/" target="_blank">
+          <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h5><i class="icon fas fa-exclamation-triangle"></i> Não esqueça de avaliar a aula no final!</h5>
+            <h6>No site da proway acesse o menu superior > avaliação > informe a sua matricula</h6>
+            <i class="icon fas fa-link"></i> Clique aqui para acessar o site da proway.
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
-  <div>
-    <i class="fas fa-home bg-gray"></i>
-</div>
-<br><br>
-    <ng-container *ngFor="let aula of detalhe.datas ; let i = index">
+</section>
+
+
+<section class="content">
+  <div class="container-fluid">
+    <br><br>
+    <base target="_blank">
+    <div class="timeline timeline">
+
+
+      <div class="time-label">
+        <span class="bg-info">
+          {{detalhe.nome}}
+        </span>
+      </div>
+      <div>
+        <i class="fas fa-home bg-gray"></i>
+      </div>
+      <br><br>
+      <ng-container *ngFor="let aula of detalhe.datas ; let i = index">
 
 
         <div>
-            <i class="fas fa-graduation-cap bg-info"></i>
-            <div class="timeline-item">
-                <div class="bg-light progress-bar-striped card card-widget widget-user">
-                    <div class="widget-user-header disabled bg-info  progress-bar-striped">
-                        <h3 class="widget-user-username">{{aula.data | date:'dd/MM/yyyy - EEEE'}}</h3>
-                        <h3 class="widget-user-desc">{{i+1}}º aula</h3>
+          <i class="fas fa-graduation-cap bg-info"></i>
+          <div class="timeline-item">
+            <div class="bg-light progress-bar-striped card card-widget widget-user">
+              <div class="widget-user-header disabled bg-info  progress-bar-striped">
+                <h3 class="widget-user-username">{{aula.data | date:'dd/MM/yyyy - EEEE'}}</h3>
+                <h3 class="widget-user-desc">{{i+1}}º aula</h3>
+              </div>
+
+              <ng-container *ngIf="aula.resumos.length>0 || aula.assuntos.length>0 ">
+                <div class="card-header ">
+                  <div class="card-title ">
+                    Assunto
+                  </div>
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-footer ">
+                  <div class="col-12" *ngIf="aula.resumos.length>0  ">
+                    <div class="card">
+                      <div class="card-header">
+                        <div class="card-title">
+                          Resumo
+
+                        </div>
+                        <div class="card-tools">
+                          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="card-body">
+
+                        <span *ngFor="let resumo of aula.resumos ; let j = index">
+                          <b> {{resumo.titulo}}</b>
+                          <br>
+                          <p [innerHtml]="resumo.paragrafo"></p>
+
+                          <hr>
+                        </span>
+
+
+
+                      </div>
+
                     </div>
+                  </div>
 
-                    <ng-container *ngIf="aula.resumos.length>0">
-                        <div class="card-header ">
-                            <div class="card-title ">
-                                Assunto
-                            </div>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
+                  <div class="col-12" *ngIf="aula.assuntos.length>0 ">
+                    <div class="card">
+                      <div class="card-header">
+
+                        <div class="card-title">
+                          Detalhes
                         </div>
-                        <div class="card-footer ">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <div class="card-title">
-                                            Resumo
+                        <div class="card-tools">
+                          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                          </button>
+                        </div>
+                      </div>
 
-                                        </div>
-                                        <div class="card-tools">
-                                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
+                    <div class="card-body">
+                      <div class="col-12">
+                        <div class="timeline timeline">
 
-                                        <span *ngFor="let resumo of aula.resumos ; let j = index">
-                                            <b> {{resumo.titulo}}</b>
-                                            <br>
-                                            <p [innerHtml]="resumo.paragrafo"></p>
+                          <div *ngFor="let assunto of aula.assuntos ; let k = index">
+                            <i class=" fas fa-book bg-info"></i>
+                            <div class="timeline-item">
+                              <div class="card">
+                                <div class="card-header">
+                                  <b>
 
-                                            <hr>
-                                        </span>
-
-
-
-                                    </div>
-                                    <div class="card-footer bg-light" *ngIf="aula.assuntos.length != 0">
-                                        <div class="timeline-item">
-                                            <div class="card">
-                                                <div class="card-header">
-
-                                                    <div class="card-title">
-                                                        DETALHES
-                                                    </div>
-                                                    <div class="card-tools">
-                                                        <button type="button" class="btn btn-tool"
-                                                            data-card-widget="collapse">
-                                                            <i class="fas fa-minus"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div class="col-12">
-                                                        <div class="timeline timeline">
-
-                                                            <div *ngFor="let assunto of aula.assuntos ; let k = index">
-                                                                <i class=" fas fa-book bg-info"></i>
-                                                                <div class="timeline-item">
-                                                                    <div class="card">
-                                                                        <div class="card-header">
-                                                                            <b>
-
-                                                                                {{assunto.titulo}}
-                                                                            </b>
-                                                                        </div>
-                                                                        <div class="card-body">
-                                                                          <p [innerHtml]="assunto.paragrafo"></p>
-                                                                            <!-- <pre *ngIf="!assunto.paragrafo.startsWith('http') " >{{assunto.paragrafo }} </pre>
-                                                                            <pre *ngIf="assunto.paragrafo.startsWith('http')" ><a href={{assunto.paragrafo}} target="_blank">{{assunto.paragrafo}}</a></pre> -->
-
-
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
-
-
-
-
-                                                            <!--
-                                                            <div>
-                                                                <i class="fas fa-home bg-gray"></i>
-                                                            </div> -->
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {{assunto.titulo}}
+                                  </b>
                                 </div>
-                            </div>
-                        </div>
-                    </ng-container>
+                                <div class="card-body">
+                                  <p [innerHtml]="assunto.paragrafo"></p>
+                                  <!-- <pre *ngIf="!assunto.paragrafo.startsWith('http') " >{{assunto.paragrafo }} </pre>
+                                                                    <pre *ngIf="assunto.paragrafo.startsWith('http')" ><a href={{assunto.paragrafo}} target="_blank">{{assunto.paragrafo}}</a></pre> -->
 
+
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
 
                 </div>
+              </ng-container>
+
+
+
+
+
+
+
             </div>
+          </div>
         </div>
-    </ng-container>
+      </ng-container>
 
 
 
 
 
-    <div>
+      <div>
         <i class="fas fa-user-graduate bg-gray"></i>
+      </div>
     </div>
-</div>
-
+  </div>
+</section>
 <br><br>
