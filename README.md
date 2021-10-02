@@ -13,3 +13,7 @@ Execute `ng build` o conteudo sera gerado no diretorio `dist/`
 ## Esse comando so deve ser executado se a página esta hospedada no firebase hosting
 
 Execute `firebase deploy`
+
+## Link para o repositorio
+
+<https://github.com/oliota/site-pessoal-angular>
