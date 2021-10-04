@@ -16,6 +16,7 @@ import {LOCALE_ID} from '@angular/core';
 import localePt from '@angular/common/locales/pt';
 import {registerLocaleData} from '@angular/common';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { DicasComponent } from './dicas/dicas.component';
 registerLocaleData(localePt, 'pt');
 
 
@@ -26,6 +27,7 @@ registerLocaleData(localePt, 'pt');
     CvComponent,
     CursosComponent,
     CursoDetalheComponent,
+    DicasComponent,
    // Nl2BrPipeModule
   ],
   imports: [
