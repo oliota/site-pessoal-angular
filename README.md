@@ -12,7 +12,11 @@ Execute `ng build` o conteudo sera gerado no diretorio `dist/`
 
 ## Esse comando so deve ser executado se a página esta hospedada no firebase hosting
 
-Execute `firebase deploy`
+Execute 
+
+`npm install -g firebase-tools`
+
+`firebase deploy`
 
 ## Link para o repositorio
 
