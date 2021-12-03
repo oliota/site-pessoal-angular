@@ -15,6 +15,7 @@ export class CvComponent implements OnInit {
   carreira_profisional: Array<Empresa> = [];
   formacao: Array<Empresa> = [];
 
+  mobile!:boolean;
   constructor(
     private cvService:CvService,
     private router: Router
@@ -22,6 +23,7 @@ export class CvComponent implements OnInit {
 
     ngOnInit() {
       this.reloadData();
+      this.mobile=window.screen.width <= 700
     }
 
     reloadData() {

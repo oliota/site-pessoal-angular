@@ -21,6 +21,7 @@ export class CursoDetalheComponent implements OnInit {
   curso: any;
   id: any;
   detalhe!: Curso;
+  mobile!:boolean;
 
   constructor(
     private cursoService: CursosService,
@@ -33,6 +34,8 @@ export class CursoDetalheComponent implements OnInit {
 
   sub!: Subscription;
   ngOnInit() {
+    
+    this.mobile=window.screen.width <= 700
     this.sub = this._Activatedroute.paramMap.subscribe(params => {
       console.log(params);
       this.curso = params.get('curso')?.toString();
@@ -61,6 +64,7 @@ export class CursoDetalheComponent implements OnInit {
 
     });
   }
+ 
 
   ngOnDestroy() {
     this.sub.unsubscribe();

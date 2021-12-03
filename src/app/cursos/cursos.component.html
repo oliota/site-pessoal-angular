@@ -29,7 +29,7 @@
       <div class="card">
 
         <div class="card-body p-0">
-          <table class="table table-striped projects">
+          <table class="table table-striped projects table-responsive">
             <thead>
               <tr>
                 <th style="width: 1%">
@@ -42,9 +42,9 @@
                 <th>
                   Progresso
                 </th>
-                <th style="width: 8%" class="text-center">
+                <!-- <th style="width: 8%" class="text-center">
                   Situação
-                </th>
+                </th> -->
 
               </tr>
             </thead>
@@ -53,11 +53,17 @@
 
               <tr *ngFor="let curso of cursos.slice().reverse() ; let i = index">
                 <td>
-                  {{cursos.length-i}}
+                  <small>
+                    {{cursos.length-i}}
+
+                  </small>
                 </td>
                 <td>
                   <a [routerLink]="['/curso_detalhe',curso.link,curso.id]">
-                    {{curso.nome}}
+                    <small>
+
+                      {{curso.nome}}
+                    </small>
                   </a>
                   <br>
                   <small>
@@ -78,9 +84,9 @@
 
                   </small>
                 </td>
-                <td class="project-state">
+                <!-- <td class="project-state">
                   <span class="badge badge-{{curso.cor}}">{{curso.situacao}}</span>
-                </td>
+                </td> -->
 
               </tr>
 

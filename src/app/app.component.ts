@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit,Renderer2 } from '@angular/core';
 
 import { Benner, Empresa } from './cv';
 import { CvService } from './cv.service';
@@ -24,11 +24,21 @@ export class AppComponent implements OnInit {
   constructor(
     private cvService: CvService,
     private cursosService: CursosService,
-    private router: Router
+    private router: Router,
+    private el: ElementRef, private renderer: Renderer2
   ) { }
 
   ngOnInit() {
     this.reloadData();
+    console.log(["🥚", "🐣", "🐥", "🐔"].sort())
+    
+    console.log([ "🐣","🥚", "🐔", "🐥"].sort());
+    
+    console.log([ "🐥","🥚", "🐣", "🐥"].sort());
+    
+    console.log([ "🥚", "🐔"].sort());
+    
+    console.log([ "🐔", "🥚"].sort());
   }
 
   reloadData() {
@@ -46,6 +56,8 @@ export class AppComponent implements OnInit {
 
     this.mensagem=this.mensagens();
   }
+
+  
 
   mensagens() {
 

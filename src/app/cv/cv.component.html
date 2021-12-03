@@ -50,28 +50,236 @@
                                 aria-expanded="false"  >Maximizar / minimizar</button>
                                 <hr> -->
 
-                                <div class="timeline timeline">
+                                <ng-container *ngIf="!mobile">
+                                    <div class="timeline timeline">
+
+                                        <ng-container *ngFor="let empresa of carreira_profisional">
+                                            <div class="time-label">
+                                                <span class=" btn btn-xs {{empresa.cor}}">
+                                                    {{empresa.data}}
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <i class="fas fa-file-code {{empresa.cor}}"></i>
+                                                <div class="timeline-item">
+                                                    <div
+                                                        class="bg-light progress-bar-striped card card-widget widget-user">
+                                                         
+                                                            <div
+                                                                class="widget-user-header disabled {{empresa.cor}}  progress-bar-striped">
+
+                                                                <h3 class="widget-user-username">{{empresa.ultimoCargo}}
+                                                                </h3>
+                                                                <h3 class="widget-user-desc">{{empresa.nome}}</h3>
+                                                            </div>
+                                                            <div class="widget-user-image ">
+                                                                <img class="img-circle elevation-2 bg-white"
+                                                                    src={{empresa.logo}}>
+                                                            </div> 
+
+
+                                                        <div class="card-header ">
+                                                            <div class="card-title ">
+                                                                Detalhes
+                                                            </div>
+                                                            <div class="card-tools">
+                                                                <button type="button" class="btn btn-tool"
+                                                                    data-card-widget="collapse">
+                                                                    <i class="fas fa-minus"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-footer ">
+                                                            <div class="col-12">
+                                                                <div class="timeline timeline ">
+
+                                                                    <ng-container *ngFor="let cargo of empresa.cargos">
+                                                                        <div class="time-label">
+                                                                            <small class="btn btn-xs {{empresa.cor}}">
+                                                                                {{cargo.data}}
+                                                                            </small>
+                                                                        </div>
+                                                                        <div>
+                                                                            <i
+                                                                                class="fas fa-file-code {{empresa.cor}}"></i>
+                                                                            <div class="timeline-item">
+                                                                                <div class="card">
+                                                                                    <div class="card-header">
+                                                                                        <div class="card-title">
+                                                                                            {{cargo.nome}}
+                                                                                        </div>
+                                                                                        <div class="card-tools">
+                                                                                            <button type="button"
+                                                                                                class="btn btn-tool"
+                                                                                                data-card-widget="collapse">
+                                                                                                <i
+                                                                                                    class="fas fa-minus"></i>
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="card-body">
+
+                                                                                        <span
+                                                                                            *ngFor="let atividade of cargo.atividades">
+                                                                                            <b>{{atividade.nome}}</b>
+                                                                                            <br>
+                                                                                            <span
+                                                                                                *ngFor="let detalhe of atividade.detalhes">
+                                                                                                {{detalhe}}
+                                                                                                <br><br>
+                                                                                            </span>
+                                                                                            <hr>
+                                                                                        </span>
+
+                                                                                    </div>
+                                                                                    <div class="card-footer bg-light">
+                                                                                        <div class="timeline-item">
+                                                                                            <div class="card">
+                                                                                                <div
+                                                                                                    class="card-header">
+
+                                                                                                    <div
+                                                                                                        class="card-title">
+                                                                                                        <span
+                                                                                                            *ngIf="empresa.nome == 'Proway - Treinamentos em tecnologia'">
+                                                                                                            Cursos
+                                                                                                            ministrados
+                                                                                                        </span>
+                                                                                                        <span
+                                                                                                            *ngIf="empresa.nome != 'Proway - Treinamentos em tecnologia'">
+                                                                                                            Atividades
+                                                                                                            paralelas
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                    <div
+                                                                                                        class="card-tools">
+                                                                                                        <button
+                                                                                                            type="button"
+                                                                                                            class="btn btn-tool"
+                                                                                                            data-card-widget="collapse">
+                                                                                                            <i
+                                                                                                                class="fas fa-minus"></i>
+                                                                                                        </button>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="card-body">
+                                                                                                    <div class="col-12">
+                                                                                                        <div
+                                                                                                            class="timeline timeline">
+
+
+                                                                                                            <ng-container
+                                                                                                                *ngFor="let atividadeGrupo of cargo.atividadesParalelas">
+                                                                                                                <div
+                                                                                                                    class="time-label">
+                                                                                                                    <span
+                                                                                                                        class={{empresa.cor}}>
+                                                                                                                        {{atividadeGrupo.data}}
+                                                                                                                    </span>
+                                                                                                                </div>
+                                                                                                                <div
+                                                                                                                    *ngFor="let atividade of atividadeGrupo.atividades">
+                                                                                                                    <i
+                                                                                                                        class="{{atividade.icone}} {{empresa.cor}}"></i>
+                                                                                                                    <div
+                                                                                                                        class="timeline-item">
+                                                                                                                        <div
+                                                                                                                            class="card">
+                                                                                                                            <div
+                                                                                                                                class="card-header">
+                                                                                                                                {{atividade.nome}}
+                                                                                                                            </div>
+                                                                                                                            <div
+                                                                                                                                class="card-body">
+                                                                                                                                <span
+                                                                                                                                    *ngFor="let detalhe of atividade.detalhes">
+
+                                                                                                                                    <span
+                                                                                                                                        *ngIf="detalhe.startsWith('http')">
+                                                                                                                                        Link
+                                                                                                                                        do
+                                                                                                                                        curso:
+                                                                                                                                        <br>
+                                                                                                                                        <a href={{detalhe}}
+                                                                                                                                            target="_blank">
+                                                                                                                                            {{detalhe}}
+                                                                                                                                        </a>
+                                                                                                                                    </span>
+                                                                                                                                    <span
+                                                                                                                                        *ngIf="!detalhe.startsWith('http')">
+                                                                                                                                        {{detalhe}}
+                                                                                                                                    </span>
+
+                                                                                                                                    <br>
+                                                                                                                                </span>
+                                                                                                                            </div>
+
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+
+
+
+                                                                                                            </ng-container>
+
+
+                                                                                                            <div>
+                                                                                                                <i
+                                                                                                                    class="fas fa-home bg-gray"></i>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </ng-container>
+
+                                                                    <div>
+                                                                        <i class="fas fa-home bg-gray"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+
+
+
+
+                                        <div>
+                                            <i class="fas fa-home bg-gray"></i>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                                <ng-container *ngIf="mobile">
+
 
                                     <ng-container *ngFor="let empresa of carreira_profisional">
-                                        <div class="time-label">
-                                            <span class={{empresa.cor}}>
-                                                {{empresa.data}}
-                                            </span>
-                                        </div>
+
+
                                         <div>
-                                            <i class="fas fa-file-code {{empresa.cor}}"></i>
+
                                             <div class="timeline-item">
                                                 <div class="bg-light progress-bar-striped card card-widget widget-user">
+ 
                                                     <div
                                                         class="widget-user-header disabled {{empresa.cor}}  progress-bar-striped">
-                                                        <h3 class="widget-user-username">{{empresa.ultimoCargo}}</h3>
-                                                        <h3 class="widget-user-desc">{{empresa.nome}}</h3>
-                                                    </div>
-                                                    <div class="widget-user-image ">
-                                                        <img class="img-circle elevation-2 bg-white"
-                                                            src={{empresa.logo}}>
-                                                    </div>
 
+                                                        <small>{{empresa.ultimoCargo}}</small>
+                                                        <br>
+                                                        <h5>{{empresa.nome}}</h5>
+                                                        <ng-container class="text-center">
+                                                            <img class="rounded-circle elevation-2 bg-white"
+                                                                width="48px" src={{empresa.logo}}>
+                                                        </ng-container>
+                                                    </div> 
                                                     <div class="card-header ">
                                                         <div class="card-title ">
                                                             Detalhes
@@ -83,130 +291,341 @@
                                                             </button>
                                                         </div>
                                                     </div>
-                                                    <div class="card-footer " >
-                                                        <div class="col-12">
-                                                            <div class="timeline timeline ">
+                                                    <div class="card-footer ">
+                                                        <div class="col-12"> 
+                                                            <ng-container *ngFor="let cargo of empresa.cargos"> 
+                                                                <div class="row">
+                                                                    <div class="card">
+                                                                        <div class="card-header">
+                                                                            <div class="card-title"> 
+                                                                                <small> 
+                                                                                    <small
+                                                                                        class="btn btn-xs {{empresa.cor}}">
+                                                                                        <i
+                                                                                            class="fas fa-file-code {{empresa.cor}}"></i>
+                                                                                        {{cargo.data}}
+                                                                                    </small>
+                                                                                    <br>
+                                                                                    
+                                                                                    {{cargo.nome}} 
+                                                                                </small>
+                                                                            </div>
+                                                                            <div class="card-tools">
+                                                                                <button type="button"
+                                                                                    class="btn btn-tool"
+                                                                                    data-card-widget="collapse">
+                                                                                    <i class="fas fa-minus"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card-body"> 
+                                                                            <div class="row">
 
-                                                                <ng-container *ngFor="let cargo of empresa.cargos">
-                                                                    <div class="time-label">
-                                                                        <span class={{empresa.cor}}>
-                                                                            {{cargo.data}}
-                                                                        </span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <i class="fas fa-file-code {{empresa.cor}}"></i>
-                                                                        <div class="timeline-item">
-                                                                            <div class="card">
-                                                                                <div class="card-header">
-                                                                                    <div class="card-title">
-                                                                                        {{cargo.nome}}
-                                                                                    </div>
-                                                                                    <div class="card-tools">
-                                                                                        <button type="button"
-                                                                                            class="btn btn-tool"
-                                                                                            data-card-widget="collapse">
-                                                                                            <i class="fas fa-minus"></i>
-                                                                                        </button>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="card-body">
+                                                                                <span
+                                                                                    *ngFor="let atividade of cargo.atividades">
+                                                                                    <b>{{atividade.nome}}</b>
+                                                                                    <br>
+                                                                                    <small
+                                                                                        *ngFor="let detalhe of atividade.detalhes">
+                                                                                        {{detalhe}}
+                                                                                        <br><br>
+                                                                                    </small>
+                                                                                    <hr>
 
-                                                                                    <span
-                                                                                        *ngFor="let atividade of cargo.atividades">
-                                                                                        <b>{{atividade.nome}}</b>
-                                                                                        <br>
-                                                                                        <span
-                                                                                            *ngFor="let detalhe of atividade.detalhes">
-                                                                                            {{detalhe}}
-                                                                                            <br><br>
-                                                                                        </span>
-                                                                                        <hr>
-                                                                                    </span>
 
-                                                                                </div>
-                                                                                <div class="card-footer bg-light">
-                                                                                    <div class="timeline-item">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
+                                                                                </span>
+                                                                            </div> 
+                                                                            <div class="row"> 
+                                                                                <div class="col-12">
 
-                                                                                                <div class="card-title">
-                                                                                                  <span *ngIf="empresa.nome == 'Proway - Treinamentos em tecnologia'">
-                                                                                                    Cursos ministrados
-                                                                                                  </span>
-                                                                                                  <span *ngIf="empresa.nome != 'Proway - Treinamentos em tecnologia'">
+
+                                                                                    <div class="card">
+                                                                                        <div class="card-header ">
+                                                                                            <div class="card-title ">
+
+                                                                                                <small
+                                                                                                    *ngIf="empresa.nome == 'Proway - Treinamentos em tecnologia'">
+                                                                                                    Cursos
+                                                                                                    ministrados
+                                                                                                </small>
+                                                                                                <small
+                                                                                                    *ngIf="empresa.nome != 'Proway - Treinamentos em tecnologia'">
                                                                                                     Atividades
                                                                                                     paralelas
-                                                                                                  </span>
-                                                                                                </div>
-                                                                                                <div class="card-tools">
-                                                                                                    <button
-                                                                                                        type="button"
-                                                                                                        class="btn btn-tool"
-                                                                                                        data-card-widget="collapse">
-                                                                                                        <i
-                                                                                                            class="fas fa-minus"></i>
-                                                                                                    </button>
-                                                                                                </div>
+                                                                                                </small>
                                                                                             </div>
-                                                                                            <div class="card-body">
-                                                                                                <div class="col-12">
+                                                                                            <div class="card-tools">
+                                                                                                <button type="button"
+                                                                                                    class="btn btn-tool"
+                                                                                                    data-card-widget="collapse">
+                                                                                                    <i
+                                                                                                        class="fas fa-minus"></i>
+                                                                                                </button>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="card-body">
+
+
+
+                                                                                            <ng-container
+                                                                                                *ngFor="let atividadeGrupo of cargo.atividadesParalelas">
+
+
+
+                                                                                                <small
+                                                                                                    class="btn btn btn-xs {{empresa.cor}}">
+                                                                                                    {{atividadeGrupo.data}}
+                                                                                                </small>
+                                                                                                <br>
+                                                                                                <ng-container
+                                                                                                    *ngFor="let atividade of atividadeGrupo.atividades">
+
+
                                                                                                     <div
-                                                                                                        class="timeline timeline">
+                                                                                                        class="card col-12">
+                                                                                                        <div
+                                                                                                            class="card-header">
+                                                                                                            <small>
+                                                                                                                <b>
 
+                                                                                                                    {{atividade.nome}}
+                                                                                                                </b>
+                                                                                                            </small>
+                                                                                                        </div>
+                                                                                                        <div
+                                                                                                            class="card-body">
+                                                                                                            <small
+                                                                                                                *ngFor="let detalhe of atividade.detalhes">
 
-                                                                                                        <ng-container
-                                                                                                            *ngFor="let atividadeGrupo of cargo.atividadesParalelas">
-                                                                                                            <div
-                                                                                                                class="time-label">
                                                                                                                 <span
-                                                                                                                    class={{empresa.cor}}>
-                                                                                                                    {{atividadeGrupo.data}}
+                                                                                                                    *ngIf="detalhe.startsWith('http')">
+
+                                                                                                                    <br>
+                                                                                                                    <a href={{detalhe}}
+                                                                                                                        target="_blank">
+                                                                                                                        Link
+                                                                                                                        do
+                                                                                                                        curso
+                                                                                                                    </a>
                                                                                                                 </span>
-                                                                                                            </div>
-                                                                                                            <div
-                                                                                                                *ngFor="let atividade of atividadeGrupo.atividades">
-                                                                                                                <i
-                                                                                                                    class="{{atividade.icone}} {{empresa.cor}}"></i>
+                                                                                                                <span
+                                                                                                                    *ngIf="!detalhe.startsWith('http')">
+                                                                                                                    {{detalhe}}
+                                                                                                                </span>
+
+                                                                                                                <br>
+                                                                                                            </small>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                    <hr>
+
+                                                                                                </ng-container>
+
+
+
+                                                                                            </ng-container>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div> 
+                                                                            </div> 
+                                                                        </div> 
+                                                                    </div>
+                                                                </div>
+                                                            </ng-container> 
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-container> 
+                                </ng-container>
+
+
+
+                            </div>
+
+
+                            <div class="tab-pane" id="formacao">
+
+                                <ng-container *ngIf="!mobile">
+                                    <div class="timeline timeline">
+
+                                        <ng-container *ngFor="let empresa of formacao">
+                                            <div class="time-label">
+                                                <span class=" btn btn-xs {{empresa.cor}}">
+                                                    {{empresa.data}}
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <i class="fas fa-file-code {{empresa.cor}}"></i>
+                                                <div class="timeline-item">
+                                                    <div
+                                                        class="bg-light progress-bar-striped card card-widget widget-user">
+                                                         
+                                                            <div
+                                                                class="widget-user-header disabled {{empresa.cor}}  progress-bar-striped">
+
+                                                                <h3 class="widget-user-username">{{empresa.ultimoCargo}}
+                                                                </h3>
+                                                                <h3 class="widget-user-desc">{{empresa.nome}}</h3>
+                                                            </div>
+                                                            <div class="widget-user-image ">
+                                                                <img class="img-circle elevation-2 bg-white"
+                                                                    src={{empresa.logo}}>
+                                                            </div> 
+
+
+                                                        <div class="card-header ">
+                                                            <div class="card-title ">
+                                                                Detalhes
+                                                            </div>
+                                                            <div class="card-tools">
+                                                                <button type="button" class="btn btn-tool"
+                                                                    data-card-widget="collapse">
+                                                                    <i class="fas fa-minus"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-footer ">
+                                                            <div class="col-12">
+                                                                <div class="timeline timeline ">
+
+                                                                    <ng-container *ngFor="let cargo of empresa.cargos">
+                                                                        <div class="time-label">
+                                                                            <small class="btn btn-xs {{empresa.cor}}">
+                                                                                {{cargo.data}}
+                                                                            </small>
+                                                                        </div>
+                                                                        <div>
+                                                                            <i
+                                                                                class="fas fa-file-code {{empresa.cor}}"></i>
+                                                                            <div class="timeline-item">
+                                                                                <div class="card">
+                                                                                    <div class="card-header">
+                                                                                        <div class="card-title">
+                                                                                            {{cargo.nome}}
+                                                                                        </div>
+                                                                                        <div class="card-tools">
+                                                                                            <button type="button"
+                                                                                                class="btn btn-tool"
+                                                                                                data-card-widget="collapse">
+                                                                                                <i
+                                                                                                    class="fas fa-minus"></i>
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="card-body">
+
+                                                                                        <span
+                                                                                            *ngFor="let atividade of cargo.atividades">
+                                                                                            <b>{{atividade.nome}}</b>
+                                                                                            <br>
+                                                                                            <span
+                                                                                                *ngFor="let detalhe of atividade.detalhes">
+                                                                                                {{detalhe}}
+                                                                                                <br><br>
+                                                                                            </span>
+                                                                                            <hr>
+                                                                                        </span>
+
+                                                                                    </div>
+                                                                                    <div class="card-footer bg-light">
+                                                                                        <div class="timeline-item">
+                                                                                            <div class="card">
+                                                                                                <div
+                                                                                                    class="card-header">
+
+                                                                                                    <div
+                                                                                                        class="card-title">
+                                                                                                        <span
+                                                                                                            *ngIf="empresa.nome == 'Proway - Treinamentos em tecnologia'">
+                                                                                                            Cursos
+                                                                                                            ministrados
+                                                                                                        </span>
+                                                                                                        <span
+                                                                                                            *ngIf="empresa.nome != 'Proway - Treinamentos em tecnologia'">
+                                                                                                            Atividades
+                                                                                                            paralelas
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                    <div
+                                                                                                        class="card-tools">
+                                                                                                        <button
+                                                                                                            type="button"
+                                                                                                            class="btn btn-tool"
+                                                                                                            data-card-widget="collapse">
+                                                                                                            <i
+                                                                                                                class="fas fa-minus"></i>
+                                                                                                        </button>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="card-body">
+                                                                                                    <div class="col-12">
+                                                                                                        <div
+                                                                                                            class="timeline timeline">
+
+
+                                                                                                            <ng-container
+                                                                                                                *ngFor="let atividadeGrupo of cargo.atividadesParalelas">
                                                                                                                 <div
-                                                                                                                    class="timeline-item">
+                                                                                                                    class="time-label">
+                                                                                                                    <span
+                                                                                                                        class={{empresa.cor}}>
+                                                                                                                        {{atividadeGrupo.data}}
+                                                                                                                    </span>
+                                                                                                                </div>
+                                                                                                                <div
+                                                                                                                    *ngFor="let atividade of atividadeGrupo.atividades">
+                                                                                                                    <i
+                                                                                                                        class="{{atividade.icone}} {{empresa.cor}}"></i>
                                                                                                                     <div
-                                                                                                                        class="card">
+                                                                                                                        class="timeline-item">
                                                                                                                         <div
-                                                                                                                            class="card-header">
-                                                                                                                            {{atividade.nome}}
-                                                                                                                        </div>
-                                                                                                                        <div
-                                                                                                                            class="card-body">
-                                                                                                                            <span
-                                                                                                                                *ngFor="let detalhe of atividade.detalhes">
+                                                                                                                            class="card">
+                                                                                                                            <div
+                                                                                                                                class="card-header">
+                                                                                                                                {{atividade.nome}}
+                                                                                                                            </div>
+                                                                                                                            <div
+                                                                                                                                class="card-body">
+                                                                                                                                <span
+                                                                                                                                    *ngFor="let detalhe of atividade.detalhes">
 
-                                                                                                                                <span *ngIf="detalhe.startsWith('http')">
-                                                                                                                                  Link do curso:
+                                                                                                                                    <span
+                                                                                                                                        *ngIf="detalhe.startsWith('http')">
+                                                                                                                                        Link
+                                                                                                                                        do
+                                                                                                                                        curso:
+                                                                                                                                        <br>
+                                                                                                                                        <a href={{detalhe}}
+                                                                                                                                            target="_blank">
+                                                                                                                                            {{detalhe}}
+                                                                                                                                        </a>
+                                                                                                                                    </span>
+                                                                                                                                    <span
+                                                                                                                                        *ngIf="!detalhe.startsWith('http')">
+                                                                                                                                        {{detalhe}}
+                                                                                                                                    </span>
+
                                                                                                                                     <br>
-                                                                                                                                  <a href={{detalhe}} target="_blank">
-                                                                                                                                    {{detalhe}}
-                                                                                                                                  </a>
                                                                                                                                 </span>
-                                                                                                                                <span *ngIf="!detalhe.startsWith('http')">
-                                                                                                                                  {{detalhe}}
-                                                                                                                                </span>
+                                                                                                                            </div>
 
-                                                                                                                                <br>
-                                                                                                                            </span>
                                                                                                                         </div>
-
                                                                                                                     </div>
                                                                                                                 </div>
+
+
+
+                                                                                                            </ng-container>
+
+
+                                                                                                            <div>
+                                                                                                                <i
+                                                                                                                    class="fas fa-home bg-gray"></i>
                                                                                                             </div>
-
-
-
-                                                                                                        </ng-container>
-
-
-                                                                                                        <div>
-                                                                                                            <i
-                                                                                                                class="fas fa-home bg-gray"></i>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -216,33 +635,208 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                </ng-container>
+                                                                    </ng-container>
 
-                                                                <div>
-                                                                    <i class="fas fa-home bg-gray"></i>
+                                                                    <div>
+                                                                        <i class="fas fa-home bg-gray"></i>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
 
+                                                    </div>
                                                 </div>
                                             </div>
+                                        </ng-container>
+
+
+
+
+                                        <div>
+                                            <i class="fas fa-home bg-gray"></i>
                                         </div>
-                                    </ng-container>
-
-
-
-
-                                    <div>
-                                        <i class="fas fa-home bg-gray"></i>
                                     </div>
-                                </div>
-                            </div>
+                                </ng-container>
+                                <ng-container *ngIf="mobile">
 
 
-                            <div class="tab-pane" id="formacao">
+                                    <ng-container *ngFor="let empresa of formacao">
 
+ 
+                                                <div class="bg-light progress-bar-striped card card-widget widget-user">
+ 
+
+                                                    <div
+                                                        class="widget-user-header disabled {{empresa.cor}}  progress-bar-striped">
+
+                                                        <small>{{empresa.ultimoCargo}}</small>
+                                                        <br>
+                                                        <h5>{{empresa.nome}}</h5>
+                                                        <ng-container class="text-center">
+                                                            <img class="rounded-circle elevation-2 bg-white"
+                                                                width="48px" src={{empresa.logo}}>
+                                                        </ng-container>
+                                                    </div> 
+                                                    <div class="card-header ">
+                                                        <div class="card-title ">
+                                                            Detalhes
+                                                        </div>
+                                                        <div class="card-tools">
+                                                            <button type="button" class="btn btn-tool"
+                                                                data-card-widget="collapse">
+                                                                <i class="fas fa-minus"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer ">
+                                                        <div class="col-12"> 
+                                                            <ng-container *ngFor="let cargo of empresa.cargos"> 
+                                                                <div class="row">
+                                                                    <div class="card">
+                                                                        <div class="card-header">
+                                                                            <div class="card-title"> 
+                                                                                <small> 
+                                                                                    
+                                                                                    <small
+                                                                                        class="btn btn-xs {{empresa.cor}}">
+                                                                                        <i
+                                                                                            class="fas fa-file-code {{empresa.cor}}"></i>
+                                                                                        {{cargo.data}}
+                                                                                    </small>
+                                                                                    <br>
+                                                                                    {{cargo.nome}}  
+                                                                                </small>
+                                                                            </div>
+                                                                            <div class="card-tools">
+                                                                                <button type="button"
+                                                                                    class="btn btn-tool"
+                                                                                    data-card-widget="collapse">
+                                                                                    <i class="fas fa-minus"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card-body"> 
+                                                                            <div class="row">
+
+                                                                                <span
+                                                                                    *ngFor="let atividade of cargo.atividades">
+                                                                                    <b>{{atividade.nome}}</b>
+                                                                                    <br>
+                                                                                    <small
+                                                                                        *ngFor="let detalhe of atividade.detalhes">
+                                                                                        {{detalhe}}
+                                                                                        <br><br>
+                                                                                    </small>
+                                                                                    <hr>
+
+
+                                                                                </span>
+                                                                            </div> 
+                                                                            <div class="row"> 
+                                                                                <div class="col-12">
+
+
+                                                                                    <div class="card">
+                                                                                        <div class="card-header ">
+                                                                                            <div class="card-title ">
+
+                                                                                                <small
+                                                                                                    *ngIf="empresa.nome == 'Proway - Treinamentos em tecnologia'">
+                                                                                                    Cursos
+                                                                                                    ministrados
+                                                                                                </small>
+                                                                                                <small
+                                                                                                    *ngIf="empresa.nome != 'Proway - Treinamentos em tecnologia'">
+                                                                                                    Atividades
+                                                                                                    paralelas
+                                                                                                </small>
+                                                                                            </div>
+                                                                                            <div class="card-tools">
+                                                                                                <button type="button"
+                                                                                                    class="btn btn-tool"
+                                                                                                    data-card-widget="collapse">
+                                                                                                    <i
+                                                                                                        class="fas fa-minus"></i>
+                                                                                                </button>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="card-body">
+
+
+
+                                                                                            <ng-container
+                                                                                                *ngFor="let atividadeGrupo of cargo.atividadesParalelas">
+
+
+
+                                                                                                <small
+                                                                                                    class="btn btn btn-xs {{empresa.cor}}">
+                                                                                                    {{atividadeGrupo.data}}
+                                                                                                </small>
+                                                                                                <br>
+                                                                                                <ng-container
+                                                                                                    *ngFor="let atividade of atividadeGrupo.atividades">
+
+
+                                                                                                    <div
+                                                                                                        class="card col-12">
+                                                                                                        <div
+                                                                                                            class="card-header">
+                                                                                                            <small>
+                                                                                                                <b>
+
+                                                                                                                    {{atividade.nome}}
+                                                                                                                </b>
+                                                                                                            </small>
+                                                                                                        </div>
+                                                                                                        <div
+                                                                                                            class="card-body">
+                                                                                                            <small
+                                                                                                                *ngFor="let detalhe of atividade.detalhes">
+
+                                                                                                                <span
+                                                                                                                    *ngIf="detalhe.startsWith('http')">
+
+                                                                                                                    <br>
+                                                                                                                    <a href={{detalhe}}
+                                                                                                                        target="_blank">
+                                                                                                                        Link
+                                                                                                                        do
+                                                                                                                        curso
+                                                                                                                    </a>
+                                                                                                                </span>
+                                                                                                                <span
+                                                                                                                    *ngIf="!detalhe.startsWith('http')">
+                                                                                                                    {{detalhe}}
+                                                                                                                </span>
+
+                                                                                                                <br>
+                                                                                                            </small>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                    <hr>
+
+                                                                                                </ng-container>
+
+
+
+                                                                                            </ng-container>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div> 
+                                                                            </div> 
+                                                                        </div> 
+                                                                    </div>
+                                                                </div>
+                                                            </ng-container> 
+                                                        </div>
+                                                    </div> 
+                                                </div>  
+                                    </ng-container> 
+                                </ng-container>
+<!-- 
                                 <div class="timeline timeline">
 
                                     <ng-container *ngFor="let empresa of formacao">
@@ -276,7 +870,7 @@
                                                             </button>
                                                         </div>
                                                     </div>
-                                                    <div class="card-footer " >
+                                                    <div class="card-footer ">
                                                         <div class="col-12">
                                                             <div class="timeline timeline ">
 
@@ -414,7 +1008,7 @@
                                     <div>
                                         <i class="fas fa-home bg-gray"></i>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
 
                         </div>
@@ -432,7 +1026,7 @@
     $("#toggle").on(
         "click",
         () => {
-           alert("opa")
+            alert("opa")
         }
     )
 </script>

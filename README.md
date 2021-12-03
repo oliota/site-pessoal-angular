@@ -16,6 +16,8 @@ Execute
 
 `npm install -g firebase-tools`
 
+`npm install admin-lte@^3.0 --save`
+
 `firebase deploy`
 
 ## Link para o repositorio

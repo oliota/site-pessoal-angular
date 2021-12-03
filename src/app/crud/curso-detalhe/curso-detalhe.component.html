@@ -45,34 +45,49 @@
                 <h3 class="widget-user-desc">{{i+1}}º aula</h3>
               </div>
 
+
               <ng-container *ngIf="aula.resumos.length>0 || aula.assuntos.length>0 ">
-                <div class="card-header ">
-                  <div class="card-title ">
-                    Assunto
-                  </div>
-                  <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                      <i class="fas fa-minus"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="card-footer ">
-                  <div class="col-12" *ngIf="aula.resumos.length>0  ">
-                    <div class="card">
-                      <div class="card-header">
-                        <div class="card-title">
-                          Resumo
 
-                        </div>
-                        <div class="card-tools">
-                          <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                            <i class="fas fa-minus"></i>
-                          </button>
-                        </div>
-                      </div>
-                      <div class="card-body">
+                <ng-container *ngIf="mobile">
+                  <div class="card-header ">
+                    <div class="card-title ">
+                      <small>
 
-                        <!-- <span *ngFor="let resumo of aula.resumos ; let j = index">
+                        Conteúdo não disponivel na vizualização mobile
+                      </small>
+                    </div>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="!mobile">
+
+
+                  <div class="card-header ">
+                    <div class="card-title ">
+                      Assunto
+                    </div>
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="card-footer ">
+                    <div class="col-12" *ngIf="aula.resumos.length>0  ">
+                      <div class="card">
+                        <div class="card-header">
+                          <div class="card-title">
+                            Resumo
+
+                          </div>
+                          <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                              <i class="fas fa-minus"></i>
+                            </button>
+                          </div>
+                        </div>
+                        <div class="card-body">
+
+                          <!-- <span *ngFor="let resumo of aula.resumos ; let j = index">
                           <b> {{resumo.titulo}}</b>
                           <br>
                           <p [innerHtml]="resumo.paragrafo"></p>
@@ -80,97 +95,94 @@
                           <hr>
                         </span> -->
 
-                        <div class="col-12">
-                          <div class="timeline timeline">
-                            <div *ngFor="let resumo of aula.resumos ; let j = index">
-                              <i class=" fab fa-leanpub bg-gray"></i>
-                              <div class="timeline-item">
-                                <div class="card">
-                                  <div class="card-header">
-                                    <div class="card-title ">
-                                     <b>
+                          <div class="col-12">
+                            <div class="timeline timeline">
+                              <div *ngFor="let resumo of aula.resumos ; let j = index">
+                                <i class=" fab fa-leanpub bg-gray"></i>
+                                <div class="timeline-item">
+                                  <div class="card">
+                                    <div class="card-header">
+                                      <div class="card-title ">
+                                        <b>
 
-                                       {{resumo.titulo}}
-                                     </b>
+                                          {{resumo.titulo}}
+                                        </b>
+                                      </div>
+                                      <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                          <i class="fas fa-minus"></i>
+                                        </button>
+                                      </div>
                                     </div>
-                                    <div class="card-tools">
-                                      <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                        <i class="fas fa-minus"></i>
-                                      </button>
+                                    <div class="card-body">
+                                      <p [innerHtml]="resumo.paragrafo"></p>
+
+
                                     </div>
-                                  </div>
-                                  <div class="card-body">
-                                    <p [innerHtml]="resumo.paragrafo"></p>
-
 
                                   </div>
-
                                 </div>
                               </div>
                             </div>
                           </div>
+
+
                         </div>
 
-
                       </div>
-
                     </div>
-                  </div>
 
-                  <div class="col-12" *ngIf="aula.assuntos.length>0 ">
-                    <div class="card">
-                      <div class="card-header">
+                    <div class="col-12" *ngIf="aula.assuntos.length>0 ">
+                      <div class="card">
+                        <div class="card-header">
 
-                        <div class="card-title">
-                          Detalhes
+                          <div class="card-title">
+                            Detalhes
+                          </div>
+                          <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                              <i class="fas fa-minus"></i>
+                            </button>
+                          </div>
                         </div>
-                        <div class="card-tools">
-                          <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                            <i class="fas fa-minus"></i>
-                          </button>
-                        </div>
-                      </div>
 
-                      <div class="card-body">
-                        <div class="col-12">
-                          <div class="timeline timeline">
+                        <div class="card-body">
+                          <div class="col-12">
+                            <div class="timeline timeline">
 
-                            <div *ngFor="let assunto of aula.assuntos ; let k = index">
-                              <i class=" fas fa-code bg-primary"></i>
-                              <div class="timeline-item">
-                                <div class="card">
-                                  <div class="card-header">
-                                    <div class="card-title ">
-                                      {{assunto.titulo}}
+                              <div *ngFor="let assunto of aula.assuntos ; let k = index">
+                                <i class=" fas fa-code bg-primary"></i>
+                                <div class="timeline-item">
+                                  <div class="card">
+                                    <div class="card-header">
+                                      <div class="card-title ">
+                                        {{assunto.titulo}}
+                                      </div>
+                                      <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                          <i class="fas fa-minus"></i>
+                                        </button>
+                                      </div>
                                     </div>
-                                    <div class="card-tools">
-                                      <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                        <i class="fas fa-minus"></i>
-                                      </button>
-                                    </div>
-                                  </div>
-                                  <div class="card-body">
-                                    <p [innerHtml]="assunto.paragrafo"></p>
+                                    <div class="card-body">
+                                      <p [innerHtml]="assunto.paragrafo"></p>
 
+
+                                    </div>
 
                                   </div>
-
                                 </div>
                               </div>
-                            </div>
 
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                </div>
+                  </div>
+                </ng-container>
               </ng-container>
-
-
-
-
 
 
 
