@@ -24,8 +24,12 @@ export class CursosComponent implements OnInit {
 
   reloadData() {
     var hoje = new Date();
-    let dataFormatada = ((hoje.getDate())) + "/" + ((hoje.getMonth() + 1)) + "/" + hoje.getFullYear();
-    console.log(dataFormatada);
+    // hoje.setHours(16)
+    // hoje.setMinutes(38)
+    // hoje.setSeconds(59)
+    let dataFormatada = ((hoje.getDate())) + "/" + ((hoje.getMonth() + 1)) + "/" + hoje.getFullYear()+" "+hoje.getHours()+":"+hoje.getMinutes();
+   // console.log('hoje',hoje);
+    //console.log('dataFormatada',dataFormatada);
     //this.cursos = this.cursoService.getCursos(); 
 
     this.cursoService.getCursos().forEach(curso => {
@@ -43,7 +47,7 @@ export class CursosComponent implements OnInit {
 
           item.datas.forEach(
             function (data: any) { 
-              console.log(data)
+            //  console.log(data)
               datas.push(new Data(data.id,data.data)) 
             }
           )
@@ -62,8 +66,14 @@ export class CursosComponent implements OnInit {
           function (param:Data) {
   
             let data=new Date(param.data) 
-        //    console.log(hoje +" --- "+ data)
-          if (hoje >= data) {
+            data.setHours(22)
+            data.setMinutes(0)
+            data.setSeconds(0)
+            //console.log(curso.nome)
+           // console.log("hoje",hoje)
+            data=new Date(data)
+          //  console.log("data",data)
+          if ( hoje >=data) {
             progresso += 100 / curso.datas.length
             // console.log(
               // ((hoje.getDate())) + "/" + ((hoje.getMonth() + 1)) + "/" + hoje.getFullYear()
@@ -98,8 +108,8 @@ export class CursosComponent implements OnInit {
   
       });
 
-      console.log("aqui")
-      console.log(this.cursos)
+     // console.log("aqui")
+     // console.log(this.cursos)
    
  
     });
