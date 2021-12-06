@@ -125,7 +125,8 @@
                                                                                             <br>
                                                                                             <span
                                                                                                 *ngFor="let detalhe of atividade.detalhes">
-                                                                                                {{detalhe}}
+                                                                                                <span [innerHtml]=detalhe></span>
+                                                                                               
                                                                                                 <br><br>
                                                                                             </span>
                                                                                             <hr>
@@ -196,13 +197,13 @@
 
                                                                                                                                     <span
                                                                                                                                         *ngIf="detalhe.startsWith('http')">
-                                                                                                                                        Link
-                                                                                                                                        do
-                                                                                                                                        curso:
+                                                                                                                                       
                                                                                                                                         <br>
                                                                                                                                         <a href={{detalhe}}
                                                                                                                                             target="_blank">
-                                                                                                                                            {{detalhe}}
+                                                                                                                                            Link
+                                                                                                                                        do
+                                                                                                                                        curso
                                                                                                                                         </a>
                                                                                                                                     </span>
                                                                                                                                     <span

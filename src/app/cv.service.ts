@@ -75,15 +75,33 @@ export class CvService {
                 new AtividadeItem(
                   "Atividades", "",
                   [
-                    "Elaborar protótipos de baixa fidelidade para novas telas e modificações em telas já existentes, transformando a demanda de negócio em um documento para ser entregue aos desenvolvedores",
                     "Traduzir o negócio para o desenvolvimento",
-                    "Apoio em testes de aceitação das entregas do desenvolvimento",
-                    "Alinhar o mundo do negócio com o da tecnologia"
+                    "Alinhar o mundo do negócio com o da tecnologia",
+                    "<b>( Angular )</b> Elaborar protótipos de baixa fidelidade para novas telas e modificações em telas já existentes",
+                    "<b>( JAVA )</b> Elaborar APIs para novas solicitações e modificações em solicitações já existentes",
+                    "Garantir a cobertura de testes na aplicação",
                   ]
                 )
               ],
               [
-
+                new AtividadeParalelaGrupo(
+                  "Dezembro / 2021",
+                  [
+                    new AtividadeItem(
+                      "Instrutor na PROWAY", "fas fa-graduation-cap",
+                      [
+                        "Lógica de programação e algoritmos 2",
+                      ]
+                    ),
+                    new AtividadeItem(
+                      "Instrutor na PROWAY", "fas fa-graduation-cap",
+                      [
+                        "Lógica de programação e algoritmos 1",
+                      ]
+                    )
+                  ]
+                )
+                ,  
                 new AtividadeParalelaGrupo(
                   "Novembro / 2021",
                   [
@@ -91,6 +109,13 @@ export class CvService {
                       "Instrutor na PROWAY", "fas fa-graduation-cap",
                       [
                         "ReactJs (SUPERDEV)",
+                      ],
+                      
+                    ),
+                    new AtividadeItem(
+                      "Instrutor na PROWAY", "fas fa-graduation-cap",
+                      [
+                        "Typescript ",
                       ]
                     )
                   ]
@@ -164,14 +189,40 @@ export class CvService {
 
 
                 new AtividadeParalelaGrupo(
+                  "Dezembro / 2021",
+                  [
+                    new AtividadeItem(
+                      "Lógica de programação e algoritmos 2", "fas fa-graduation-cap",
+                      [
+                        "https://www.proway.com.br/curso/logica-de-programacao-e-algoritmos-ii",
+                      ]
+                    ),
+                    new AtividadeItem(
+                      "Lógica de programação e algoritmos 1", "fas fa-graduation-cap",
+                      [
+                        "https://www.proway.com.br/curso/logica-de-programacao-e-algoritmos-i",
+                      ]
+                    )
+                  ]
+                )
+                ,  
+                new AtividadeParalelaGrupo(
                   "Novembro / 2021",
                   [
+                    new AtividadeItem(
+                      "Typescript", "fas fa-graduation-cap",
+                      [
+                        "https://www.proway.com.br/curso/typescript",
+                      ]
+                    ),
                     new AtividadeItem(
                       "ReactJs (SUPERDEV)", "fas fa-graduation-cap",
                       [
                         "https://www.proway.com.br/curso/trabalhando-em-reactjs",
-                      ]
+                      ],
+                      
                     )
+                   
                   ]
                 )
                 ,
