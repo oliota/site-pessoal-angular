@@ -84,7 +84,9 @@
         </div>
       </div>
 
- 
+
+
+
       <div class='col-12'>
         <div class='card'>
           <div class='card-header'>
@@ -94,38 +96,96 @@
                   class='fas fa-minus'></i></button></div>
           </div>
           <div class='card-body'>
-           <ol>
-             <li>Acesse sua conta no github</li>
-             <li>Crie um repositorio com o mesmo nome do seu usuario e marque a opção (Create README file)</li>
-             <li>Ao fazer isso a página inicial do seu perfil no github já tera um resumo</li>
-             <li>Para editar o resumo será necessário editar o README desse repositorio</li>
-             <li>É possivel fazer de 2 formas
-               <ol>
-                 <li>Editando manualmente no github</li>
-                 <li>Clonando o projeto e fazendo a alteração no Visual Studio Code (recomendado)
-                   <ul>
-                     <li>Fazer o clone do repositorio</li>
-                     <li>Editar o README (use algum preview) para ajudar</li>
-                     <li>Realize o commit e faça o push</li>
-                     <li>Ao fazer isso as mudanças já serão visiveis no seu perfil do Github</li> 
-                   </ul>
-                   <hr>
-                   <ul>
-                     Segue um template
-                     <ul>
-                       <li> <a href="https://github.com/oliota" target="_blank">Meu perfil no github</a></li>
-                       <li> <a href="https://github.com/oliota/oliota" target="_blank">Repositorio com mesmo nome do meu perfil</a></li>
-                       <li> <a href="https://raw.githubusercontent.com/oliota/oliota/main/README.md" target="_blank">Arquivo de exemplo para copiar o código</a></li>
-                       <li>OBS: Onde tiver username=oliota , coloque o seu usuario</li> 
-                     </ul>
-                   </ul>
-                 </li>
-               </ol>
-             </li>
-           </ol>
+            <ol>
+              <li>Acesse sua conta no github</li>
+              <li>Crie um repositorio com o mesmo nome do seu usuario e marque a opção (Create README file)</li>
+              <li>Ao fazer isso a página inicial do seu perfil no github já tera um resumo</li>
+              <li>Para editar o resumo será necessário editar o README desse repositorio</li>
+              <li>É possivel fazer de 2 formas
+                <ol>
+                  <li>Editando manualmente no github</li>
+                  <li>Clonando o projeto e fazendo a alteração no Visual Studio Code (recomendado)
+                    <ul>
+                      <li>Fazer o clone do repositorio</li>
+                      <li>Editar o README (use algum preview) para ajudar</li>
+                      <li>Realize o commit e faça o push</li>
+                      <li>Ao fazer isso as mudanças já serão visiveis no seu perfil do Github</li>
+                    </ul>
+                    <hr>
+                    <ul>
+                      Segue um template
+                      <ul>
+                        <li> <a href="https://github.com/oliota" target="_blank">Meu perfil no github</a></li>
+                        <li> <a href="https://github.com/oliota/oliota" target="_blank">Repositorio com mesmo nome do
+                            meu perfil</a></li>
+                        <li> <a href="https://raw.githubusercontent.com/oliota/oliota/main/README.md"
+                            target="_blank">Arquivo de exemplo para copiar o código</a></li>
+                        <li>OBS: Onde tiver username=oliota , coloque o seu usuario</li>
+                      </ul>
+                    </ul>
+                  </li>
+                </ol>
+              </li>
+            </ol>
           </div>
         </div>
       </div>
+
+
+      <div class='col-12'>
+        <div class='card'>
+          <div class='card-header'>
+            <div class='card-title '> <b> Como clonar um repositorio do Github no computador</b>
+            </div>
+            <div class='card-tools'><button type='button' class='btn btn-tool' data-card-widget='collapse'><i
+                  class='fas fa-minus'></i></button></div>
+          </div>
+          <div class='card-body'>
+            <ol>
+              <li>Acesse sua conta no github</li>
+              <li>Acesse um repositorio</li>
+              <li>Selecione o botão verde CODE</li>
+              <li>Copie o endereço que aparece na janela que apareceu após clicar no botão CODE</li>
+              <li>Escolha uma pasta no computador para clonar o repositorio</li>
+              <li>Execute um click com o botão direito do m ouse e escolha "git bash here"</li>
+              <li>Na janela do terminal digite <b>git clone</b> e cole o endereço do repositorio aqui</li>
+              <li>Tecle ENTER para confirmar</li>
+              <li>Após o comomando executar será criada uma pasta com o mesmo nome do repositório no computador</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+
+      <div class='col-12'>
+        <div class='card'>
+          <div class='card-header'>
+            <div class='card-title '> <b> Como salvar as mudanças feitas no computador para o repositorio no github</b>
+            </div>
+            <div class='card-tools'><button type='button' class='btn btn-tool' data-card-widget='collapse'><i
+                  class='fas fa-minus'></i></button></div>
+          </div>
+          <div class='card-body'>
+            <ol>
+              <li>Localize a pasta principal do seu repositorio clonado no computador</li>
+              <li>Clique com o botão direito do mouse na pasta principal (ou se a pasta já estiver aberta clique com o botão direito do mouse em um espaço em branco da pasta)</li>
+              <li>Escolha git GUI here</li>
+              <li>Após abrir a janela selecione o botão Staged changed</li>
+              <li>Ao clicar os arquivos serão migrados da lista vermelha para lista verde, isso significa que os arquivos serão considerados no commit</li>
+              <li>Agora no campo commit, informe uma mensagem que justifique sua alteração, pode ser uma frase curta</li>
+              <li>Ao informar uma mensagem de commit é possivel clicar no botão COMMIT</li>
+              <li>Após clicar no botão commit a tela ficará em branco, isso significa que o pacote já esta pronto para fazer um push</li>
+              <li>Selecione o botão push </li>
+              <li>Na janela que foi aberta selecione novamente o botão push</li>
+              <li>Na primeira vez que é realizado um push na maquina será solicitado as credenciais do git</li>
+              <li>Escolha a 1º opção "Autenticar no navegador" e utilize o mesmo navegador onde o github esta conectado para facilitar</li>
+              <li>Conceda acesso ao seu github e pronto, as suas mudanças estarão salvas no github</li>
+              <li>Para conferir, acesse o seu repositorio no site do github e localize as suas mudanças</li> 
+            </ol>
+          </div>
+        </div>
+      </div>
+
 
     </div>
 
