@@ -48,7 +48,7 @@
 
               </tr>
             </thead>
-            <tbody>
+            <tbody *ngIf="cursos">
 
 
               <tr *ngFor="let curso of cursos.slice().reverse() ; let i = index">

@@ -21,7 +21,9 @@ export class CursoDetalheComponent implements OnInit {
   curso: any;
   id: any;
   detalhe!: Curso;
-  mobile!:boolean;
+  mobile!: boolean;
+  cursoPadrao!: boolean;
+  linkAvaliacao!: string;
 
   constructor(
     private cursoService: CursosService,
@@ -34,10 +36,17 @@ export class CursoDetalheComponent implements OnInit {
 
   sub!: Subscription;
   ngOnInit() {
-    
-    this.mobile=window.screen.width <= 700
+
+    this.mobile = window.screen.width <= 700
+
+    this.cursoPadrao = !window.location.href.includes('entra21');
+
+    this.linkAvaliacao = this.cursoPadrao ? 'https://www.proway.com.br/' : 'http://externo.proway.com.br/login-aluno';
+
+
+
     this.sub = this._Activatedroute.paramMap.subscribe(params => {
-      console.log(params);
+      //console.log(params);
       this.curso = params.get('curso')?.toString();
       this.id = params.get('id')?.toString();
 
@@ -48,23 +57,24 @@ export class CursoDetalheComponent implements OnInit {
         let dado = JSON.parse(json);
         this.detalhe = new Curso(this.id, dado.nome, dado.datas, dado.link);
 
-        console.log(this.detalhe);
-        console.log(this.detalhe.datas);//TODO erro pq os outros cursos velhos nao tem os campos resumos, assuntos
-     
+        //console.log(this.detalhe);
+        //console.log(this.detalhe.datas);
+        
+
         this.detalhe.datas.forEach(aula => {
           aula.resumos.forEach(resumo => {
-            if(resumo.paragrafo.includes('iframe')){
-              resumo.paragrafo=this.sanitizer.bypassSecurityTrustHtml(resumo.paragrafo) as string
+            if (resumo.paragrafo.includes('iframe')) {
+              resumo.paragrafo = this.sanitizer.bypassSecurityTrustHtml(resumo.paragrafo) as string
             }
-            console.log(resumo.paragrafo)
+           // console.log(resumo.paragrafo)
           });
         });
-     
+
       });
 
     });
   }
- 
+
 
   ngOnDestroy() {
     this.sub.unsubscribe();

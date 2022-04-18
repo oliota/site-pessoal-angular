@@ -2,12 +2,24 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
-        <a href="https://www.proway.com.br/" target="_blank">
+        <a [href]="linkAvaliacao" target="_blank">
           <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <h5><i class="icon fas fa-exclamation-triangle"></i> Não esqueça de avaliar a aula no final!</h5>
-            <h6>No site da proway acesse o menu superior > avaliação > informe a sua matricula</h6>
-            <i class="icon fas fa-link"></i> Clique aqui para acessar o site da proway.
+
+            <ng-container *ngIf="cursoPadrao">
+              <h6>No site da proway acesse o menu superior > avaliação > informe a sua matricula</h6>
+              <i class="icon fas fa-link"></i> 
+              Clique aqui para acessar o site da proway.
+            </ng-container>
+
+            <ng-container *ngIf="!cursoPadrao">
+              <h6>No site Externo > realize o login > Conclua sua avaliação</h6>
+              <i class="icon fas fa-link"></i> 
+              Clique aqui para acessar o site Externo.
+            </ng-container>
+
+           
           </div>
         </a>
       </div>
@@ -16,13 +28,12 @@
 </section>
 
 
-<section class="content">
+<section class="content" *ngIf="detalhe">
   <div class="container-fluid">
     <br><br>
     <base target="_blank">
     <div class="timeline timeline">
-
-
+ 
       <div class="time-label">
         <span class="bg-info">
           {{detalhe.nome}}
