@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AtividadeItem, AtividadeParalelaGrupo, Benner, Cargo,Empresa } from './cv';
+import { AtividadeItem, AtividadeParalelaGrupo, Benner, Cargo, Empresa } from './cv';
 
 @Injectable({
   providedIn: 'root'
@@ -75,15 +75,33 @@ export class CvService {
                 new AtividadeItem(
                   "Atividades", "",
                   [
-                    "Traduzir o negócio para o desenvolvimento",
-                    "Alinhar o mundo do negócio com o da tecnologia",
-                    "<b>( Angular )</b> Elaborar protótipos de baixa fidelidade para novas telas e modificações em telas já existentes",
-                    "<b>( JAVA )</b> Elaborar APIs para novas solicitações e modificações em solicitações já existentes",
-                    "Garantir a cobertura de testes na aplicação",
+                    "Arquitetando, analisando e desenvolvendo em Java, Javascript, tecnologias Angular com aplicação das melhores práticas de desenvolvimento e testes, incluindo validações de segurança e Sonar",
+                    "Nivelando a equipe no conhecimento de backend e frontend.",
+                    "Proporcionando melhorias contínuas nos processos internos com as mesmas tecnologias utilizadas para o projeto.",
+                    "Fora do horário comercial, trabalho como instrutor multistack.",
                   ]
                 )
               ],
               [
+                new AtividadeParalelaGrupo(
+                  "Abril / 2022",
+                  [
+
+                    new AtividadeItem(
+                      "Instrutor ENTRA21", "fas fa-graduation-cap",
+                      [
+                        "Lógica de Programação",
+                      ]
+                    ),
+                    new AtividadeItem(
+                      "Instrutor ENTRA21", "fas fa-graduation-cap",
+                      [
+                        "Metodologias ágeis",
+                      ]
+                    )
+                  ]
+                )
+                ,
                 new AtividadeParalelaGrupo(
                   "Dezembro / 2021",
                   [
@@ -101,7 +119,7 @@ export class CvService {
                     )
                   ]
                 )
-                ,  
+                ,
                 new AtividadeParalelaGrupo(
                   "Novembro / 2021",
                   [
@@ -110,7 +128,7 @@ export class CvService {
                       [
                         "ReactJs (SUPERDEV)",
                       ],
-                      
+
                     ),
                     new AtividadeItem(
                       "Instrutor na PROWAY", "fas fa-graduation-cap",
@@ -205,7 +223,7 @@ export class CvService {
                     )
                   ]
                 )
-                ,  
+                ,
                 new AtividadeParalelaGrupo(
                   "Novembro / 2021",
                   [
@@ -220,9 +238,9 @@ export class CvService {
                       [
                         "https://www.proway.com.br/curso/trabalhando-em-reactjs",
                       ],
-                      
+
                     )
-                   
+
                   ]
                 )
                 ,

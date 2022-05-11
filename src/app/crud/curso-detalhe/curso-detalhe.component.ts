@@ -59,14 +59,14 @@ export class CursoDetalheComponent implements OnInit {
 
         //console.log(this.detalhe);
         //console.log(this.detalhe.datas);
-        
+
 
         this.detalhe.datas.forEach(aula => {
           aula.resumos.forEach(resumo => {
             if (resumo.paragrafo.includes('iframe')) {
               resumo.paragrafo = this.sanitizer.bypassSecurityTrustHtml(resumo.paragrafo) as string
             }
-           // console.log(resumo.paragrafo)
+            // console.log(resumo.paragrafo)
           });
         });
 
@@ -83,6 +83,52 @@ export class CursoDetalheComponent implements OnInit {
   apartirDeHoje(data: Date) {
     console.log(new Date().toDateString() + " comparando " + new Date(data))
     return new Date(new Date().toDateString()) >= new Date(data)
+
+  }
+
+  scrollTo(anchor: string) {
+    (document.getElementById(anchor) as HTMLElement).scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+
+  }
+
+  gerarTitle(aula: any) {
+    //console.log(aula);
+    var dataISODataHora = new Date(aula.data); 
+
+    let title = this.dayOfWeek(dataISODataHora.getUTCDay())+": "+dataISODataHora.toLocaleDateString() +"\n▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄\n\n";
+    title += `Resumos:`;
+    aula.resumos.forEach((resumo: { titulo: any; }) => {
+      title += `
+    ${resumo.titulo}`;
+    });
+    title += `\n▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄\n\nAssuntos:`;
+    aula.assuntos.forEach((assunto: { titulo: any; }) => {
+      title += `
+    ${assunto.titulo}`;
+    });
+    return title;
+  }
+
+  dayOfWeek(day:number) {
+
+    switch (day) {
+      case 0: 
+        return "Domingo";
+      case 1:
+        return "Segunda-feira";
+      case 2:
+        return "Terça-feira";
+      case 3:
+        return "Quarta-feira";
+      case 4:
+        return "Quinta-feira";
+      case 5:
+        return "Sexta-feira";
+      case 6:
+        return "Sábado"; 
+ 
+    } 
+    return "";
 
   }
 

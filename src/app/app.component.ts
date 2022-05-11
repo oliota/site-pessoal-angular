@@ -34,6 +34,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.reloadData();
 
+    return;
     ClassConsole.initClass()
     ClassSessionStorage.initClass()
     ClassLocalStorage.initClass()
