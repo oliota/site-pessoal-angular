@@ -62,9 +62,12 @@
               
               <div class="widget-user-header disabled bg-info  progress-bar-striped ">
                 <ng-container *ngFor="let aula of detalhe.datas ; let i = index"> 
-                  <a class="bg-dark progress-bar-striped rounded ml-2 p-1 atalho" (click)="scrollTo('aula'+i)" [title]="gerarTitle(aula)"  > 
+                  <a *ngIf="isToday(aula)" class="bg-warning progress-bar-striped rounded ml-2 p-1 atalho" (click)="scrollTo('aula'+i)" [title]="gerarTitle(aula)"  > 
                     {{ i+1<=9 ?'&nbsp;'+(i+1):i+1 }}º 
-                </a>
+                </a> 
+                <a *ngIf="!isToday(aula)" class="bg-dark progress-bar-striped rounded ml-2 p-1 atalho" (click)="scrollTo('aula'+i)" [title]="gerarTitle(aula)"  > 
+                  {{ i+1<=9 ?'&nbsp;'+(i+1):i+1 }}º 
+              </a>
               </ng-container>
                 <h3 class="widget-user-username">{{aula.data | date:'dd/MM/yyyy - EEEE'}}</h3>
                 <h3 class="widget-user-desc">{{i+1}}º aula</h3>

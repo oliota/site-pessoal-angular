@@ -18,6 +18,10 @@ Execute
 
 `npm install admin-lte@^3.0 --save`
 
+`npm i --save-dev @types/jquery`
+
+`npm i --save-dev @types/jquery`
+
 `firebase deploy`
 
 ## Link para o repositorio

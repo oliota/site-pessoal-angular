@@ -132,6 +132,11 @@ export class CursoDetalheComponent implements OnInit {
 
   }
 
+  isToday(aula:any){
+return new Date(aula.data).toISOString().slice(0, 10)==new Date().toISOString().slice(0, 10);  
+
+  }
+
 }
 
 

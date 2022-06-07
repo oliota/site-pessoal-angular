@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioComponent implements OnInit {
 
+  mobile!: boolean;
   constructor() { }
 
   ngOnInit(): void {
+    this.mobile = window.screen.width <= 700
+    
+
+
   }
 
 }
