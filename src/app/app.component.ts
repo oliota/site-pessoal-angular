@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { ClassConsole } from './easterEggs/ClassConsole';
 import { ClassSessionStorage } from './easterEggs/ClassSessionStorage';
 import { ClassLocalStorage } from './easterEggs/ClassLocalStorage';
-
+import * as $ from 'jquery'
 
 @Component({
   selector: 'app-root',
@@ -22,7 +22,9 @@ export class AppComponent implements OnInit {
   carreira_profisional: Array<Empresa> = [];
   empresas!: number;
   cursos!: number;
-  mensagem!: string;
+  mensagem!: string; 
+  temaDark:boolean=false;
+  contador:number=0;
 
   constructor(
     private cvService: CvService,
@@ -34,15 +36,10 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.reloadData();
 
-    return;
+    //return;
     ClassConsole.initClass()
     ClassSessionStorage.initClass()
-    ClassLocalStorage.initClass()
-
-
-
-
-
+    ClassLocalStorage.initClass()  
 
   }
 
@@ -88,6 +85,20 @@ export class AppComponent implements OnInit {
     let min = Math.ceil(0);
     let max = Math.floor(mensagens.length);
     return mensagens[Math.floor(Math.random() * (max - min)) + min];
+  }
+
+  switchMode(){ 
+    if(this.contador%2==0){
+      this.contador++;
+      return;
+    }
+    if(this.temaDark){
+      $('body').removeClass('dark-mode') 
+    }else{ 
+      $('body').addClass('dark-mode') 
+    }
+    this.temaDark=!this.temaDark;
+    this.contador++;
   }
 
 

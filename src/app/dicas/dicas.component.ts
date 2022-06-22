@@ -18,9 +18,7 @@ export class DicasComponent implements OnInit {
        	"scope": "html",
        	"prefix": "oliota.div",
        	"body": [
-       		"<div>"+
-           "teste"+
-       		"</div>"
+       		"<div>teste</div>"
        	],
        	"description": "Descrição longa do snnipet"
        }

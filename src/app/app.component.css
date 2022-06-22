@@ -2,3 +2,180 @@ swiper {
   height: 400px;
   width: 600px;
 }
+
+.switch-mode {
+  height: 50%;
+  width: 50%;
+  display: grid;
+  place-items: center;
+  zoom: 0.5;
+  -moz-transform: scale(0.5);
+}
+
+#checkbox {
+  display: none;
+}
+.toggle {
+  height: 80px;
+  width: 200px;
+  border-radius: 9999px;
+  background: linear-gradient(to bottom, #6ec8ff, #1f73a7);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 6px 6px 10px #0000003d;
+}
+.mountains {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 3;
+  background-color: #1d7371;
+  transition: all 0.5s ease-in-out;
+  clip-path: polygon(
+    0% 80%,
+    25% 50%,
+    40% 70%,
+    60% 35%,
+    65% 45%,
+    80% 20%,
+    100% 80%,
+    100% 100%,
+    0% 100%
+  );
+}
+.cloud {
+  height: 8px;
+  width: 18px;
+  border-radius: 9999px;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  filter: opacity(0.5);
+}
+.sea {
+  height: 200px;
+  width: 300%;
+  border-radius: 50%;
+  position: absolute;
+  right: 50%;
+  bottom: -500%;
+  transform: translateX(50%);
+  transition: all 0.5s ease-in-out;
+  background: linear-gradient(
+    to bottom,
+    #3f75cc,
+    #06063b,
+    #06063b,
+    #06063b,
+    #06063b
+  );
+}
+.sea::before {
+  content: "";
+  height: 25px;
+  width: 15px;
+  background-color: rgba(254, 254, 254, 0.34);
+  filter: blur(5px);
+  position: absolute;
+  top: 2%;
+  left: 43%;
+}
+.star {
+  height: 2px;
+  width: 2px;
+  position: absolute;
+  top: -50%;
+  right: 15%;
+  background-color: #fff;
+  transition: all 0.5s ease-in-out;
+  filter: blur(0.8px);
+  border-radius: 50%;
+}
+.star::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: -50%;
+  right: 20px;
+  background-color: #fff;
+  transition: all 0.5s ease-in-out;
+  border-radius: 50%;
+}
+
+.star::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 10px;
+  right: -20px;
+  background-color: #fff;
+  transition: all 0.5s ease-in-out;
+  border-radius: 50%;
+}
+
+.cloud::before {
+  content: "";
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: -50%;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+#checkbox:checked + .toggle {
+  background: linear-gradient(to bottom, #036daf, #003d63);
+}
+
+.toggle::before {
+  content: "";
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  top: 10%;
+  right: 30%;
+  border-radius: 50%;
+  background-color: #ffd34d;
+  transition: all 0.5s ease-in-out;
+  box-shadow: 0 0 15px #fef95fc3;
+}
+
+.toggle::after {
+  content: "";
+  height: 35px;
+  width: 35px;
+  position: absolute;
+  top: 10%;
+  left: -60%;
+  border-radius: 50%;
+  background-color: #ffffff;
+  transition: all 0.5s ease-in-out;
+  box-shadow: 0 0 10px #ffffff88;
+}
+
+#checkbox:checked + .toggle::before {
+  transform: translateX(280%);
+}
+
+#checkbox:checked + .toggle::after {
+  transform: translateX(480%);
+}
+
+#checkbox:checked + .toggle .mountains {
+  background-color: #05021a;
+  transform: translateY(100%);
+}
+#checkbox:checked + .toggle .sea {
+  background-color: #05021a;
+  bottom: -210%;
+}
+#checkbox:checked + .toggle .star {
+  transform: rotate(10deg);
+  top: 20%;
+}

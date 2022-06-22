@@ -20,7 +20,8 @@ Execute
 
 `npm i --save-dev @types/jquery`
 
-`npm i --save-dev @types/jquery`
+`npm i @types/jquery`
+
 
 `firebase deploy`
 
