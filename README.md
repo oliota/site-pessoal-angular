@@ -22,7 +22,6 @@ Execute
 
 `npm i @types/jquery`
 
-
 `firebase deploy`
 
 ## Link para o repositorio
