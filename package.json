@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve --port 5000",
     "build": "ng build",
+    "especific-buttons": "node especific_buttons",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

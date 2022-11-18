@@ -12,7 +12,7 @@ export class DicasComponent implements OnInit {
 
   ngOnInit(): void {
  
-    this.exemplo=`
+    this.exemplo=String(`
     {
        "Primeiro snnipet": {
        	"scope": "html",
@@ -23,7 +23,7 @@ export class DicasComponent implements OnInit {
        	"description": "Descrição longa do snnipet"
        }
     }
-    `
+    `)
   }
 
 }
