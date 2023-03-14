@@ -36,7 +36,17 @@
     background-color: #454d55 !important;
     color: #fff;
   }
+
+  .dark-mode .bg-light  {
+    background-color: #454d55 !important;
+    color: #fff;
+  }
+ 
+  .dark-mode .brand-text { 
+    color: #fff;
+  }
   
+
   .layout-navbar-fixed .dark-mode .wrapper .sidebar-dark-primary .brand-link:not([class*="navbar"]) {
     background-color: #343a40;
   }
