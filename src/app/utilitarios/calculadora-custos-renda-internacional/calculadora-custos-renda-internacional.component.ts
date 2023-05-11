@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OliotaUtils } from 'src/app/utils';
+import { CotacaoMonetariaService } from './cotacao-monetaria.service';
+import { ClassConsole } from 'src/app/easterEggs/ClassConsole';
 
 
 @Component({
@@ -9,12 +11,32 @@ import { OliotaUtils } from 'src/app/utils';
 })
 export class CalculadoraCustosRendaInternacionalComponent implements OnInit {
 
-  oliotaUtils!:OliotaUtils
-  constructor(oliota:OliotaUtils) { 
-  this.oliotaUtils=oliota
+  rendas: any = { 
+    conversoes:{}
+  }
+
+  oliotaUtils!: OliotaUtils
+  constructor(oliota: OliotaUtils,
+    private cotacaoService:CotacaoMonetariaService
+    ) {
+    this.oliotaUtils = oliota
   }
 
   ngOnInit(): void {
+
+     this.cotacaoService.getCotacaoes( ).subscribe((data: {}) => {
+      const response: any = data;
+       ClassConsole.log("getCotacaoes",response)
+    }, (error: {}) => {
+      
+    }); 
+
   }
+
+  changeRenda(target:any){
+console.log("changeRenda",target.value)
+
+  }
+   
 
 }
