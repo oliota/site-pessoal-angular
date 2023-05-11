@@ -4,9 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 5000",
-    "build": "ng build",
+    "build": "ng build --output-hashing=all",
     "especific-buttons": "node especific_buttons",
     "watch": "ng build --watch --configuration development",
+    "firebase": "firebase deploy",
     "test": "ng test"
   },
   "private": true,

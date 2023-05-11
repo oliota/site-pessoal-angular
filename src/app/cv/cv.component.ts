@@ -3,6 +3,7 @@ import {CvService} from '../cv.service'
 import { Router } from '@angular/router';
 import {Benner, Empresa} from '../cv';
 import { CarouselModule, WavesModule } from 'angular-bootstrap-md'
+import { ClassConsole } from '../easterEggs/ClassConsole';
 
 @Component({
   selector: 'app-cv',

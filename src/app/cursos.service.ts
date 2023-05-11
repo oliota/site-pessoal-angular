@@ -11,8 +11,8 @@ export class CursosService {
   hoje!: Date;
   cursos!: Array<Curso>;
 
-  //private baseUrl = "https://oliota.herokuapp.com";
-  private baseUrl = "http://127.0.0.1:4000";
+  private baseUrl = "https://oliota.herokuapp.com";
+  //private baseUrl = "http://127.0.0.1:4000";
 
   constructor(private http: HttpClient) { }
 

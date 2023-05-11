@@ -1,0 +1,76 @@
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Utilitários</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <section class="content">
+    <div class="container-fluid">
+      <base target="_blank" />
+  
+      <div class="card collapsed-card">
+        <div class="card-header">
+          <div class="card-title">
+            <span>
+              <a routerLink="/dicas">
+                Titulo
+                <i class="fas fa-link"></i>
+              </a>
+            </span>
+          </div>
+          <div class="card-tools">
+            <button
+              type="button"
+              class="btn btn-tool"
+              data-card-widget="collapse"
+            >
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="col">item</div>
+        </div>
+      </div>
+  
+      <div class="card collapsed-card">
+        <div class="card-header">
+          <div class="card-title">
+            <span>
+              <a routerLink="calculadora_renda_custos_internacional">
+                Calculadora de custos percentual a renda internacional
+                <i class="fas fa-link"></i>
+              </a>
+            </span>
+          </div>
+          <div class="card-tools">
+            <button
+              type="button"
+              class="btn btn-tool"
+              data-card-widget="collapse"
+            >
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="col">item</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <div style="position: fixed; right: 50px; top: 85%; z-index: 900">
+    <button
+      class="btn btn-info rounded-circle"
+      style="padding: 8px 10px 8px 10px; width: 50px; height: 50px; z-index: 900"
+      (click)="oliotaUtils.scrollTo('topo')"
+    >
+      <i class="icon fas fa-arrow-up"></i>
+    </button>
+  </div>
+  

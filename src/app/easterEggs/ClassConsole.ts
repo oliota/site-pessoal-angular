@@ -1,9 +1,11 @@
+
+
 export class ClassConsole {
 
     static negrito: string = "font-size: 20px;color: blue;font-weight: bold;"
     static rainbowww: string = 'font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)';
 
-    static orange: string = 'color: tomato;   -webkit-text-stroke: 1px black; font-size:30px;';
+    static orange: string = 'color: tomato;   -webkit-text-stroke: 1px black; font-size:20px;';
 
     // 'background-image:    url("https://yt3.ggpht.com/ytc/AAUvwnh8uSXNsEBqViI4hmRIRGfdVngmV4Tc1r-sM4xqKQ=s176-c-k-c0x00ffffff-no-rj")',
     static styleArray: any = [
@@ -20,6 +22,9 @@ export class ClassConsole {
 
 
     public static initClass() {
+
+
+
         console.log('%c ', this.styleArray.join(';'));
 
         console.groupCollapsed('%c<----- Clique aqui , para aprender mais sobre o log do console', this.orange)
@@ -114,8 +119,10 @@ export class ClassConsole {
 
 
         console.groupEnd()
+        console.groupEnd()
+        console.groupEnd()
 
-        console.groupCollapsed(' ')
+       // console.groupCollapsed(' ')
 
 
     }
@@ -440,6 +447,55 @@ export class ClassConsole {
 
 
         console.log('%c Parabéns, vc aprendeu CONSOLE lendo o console, que legal !!!', this.rainbowww);
+
+    }
+
+
+    public static indentJson(json: string) {
+        json = json
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
+        return json.replace(
+            /("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g,
+            function (match) {
+                var cls = "number";
+                if (/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        cls = "key";
+                    } else {
+                        cls = "string";
+                    }
+                } else if (/true|false/.test(match)) {
+                    cls = "boolean";
+                } else if (/null/.test(match)) {
+                    cls = "null";
+                }
+                return '<span class="' + cls + '">' + match + "</span>";
+            }
+        );
+    }
+
+    public static log(title: any, ...args: any) {
+        let modo_desenvolvedor: any = sessionStorage.getItem("modo_desenvolvedor")
+
+        modo_desenvolvedor = JSON.parse(modo_desenvolvedor)
+
+
+        if (modo_desenvolvedor) {
+
+            try {
+                throw new Error('Rastro completo apenas no nivel de DETALHADO no navegador');
+            } catch (e: any) {
+                console.log(
+                    "%c" + title,
+                    this.orange,
+                    JSON.parse(JSON.stringify(args))
+                );
+                console.debug(e.stack)
+            }
+        }
+
 
     }
 }

@@ -1,13 +1,14 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, Renderer2 } from '@angular/core';
 
 import { Benner, Empresa } from './cv';
 import { CvService } from './cv.service';
 import { CursosService } from './cursos.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClassConsole } from './easterEggs/ClassConsole';
 import { ClassSessionStorage } from './easterEggs/ClassSessionStorage';
 import { ClassLocalStorage } from './easterEggs/ClassLocalStorage';
 import * as $ from 'jquery'
+import { OliotaUtils } from './utils';
 
 @Component({
   selector: 'app-root',
@@ -16,33 +17,62 @@ import * as $ from 'jquery'
 })
 export class AppComponent implements OnInit {
   title = 'oliota-angular';
-
+  oliotaUtils!: OliotaUtils
 
   cargos_benner: Array<Benner> = [];
   carreira_profisional: Array<Empresa> = [];
   empresas!: number;
   cursos!: number;
-  mensagem!: string; 
-  temaDark:boolean=false;
-  contador:number=0;
+  mensagem!: string;
+  temaDark: boolean = false;
+  contador: number = 0;
 
   constructor(
     private cvService: CvService,
+  //  public toastrService: ToastrService,
     private cursosService: CursosService,
+    private activatedRoute: ActivatedRoute,
     private router: Router,
+    public oliota: OliotaUtils,
     private el: ElementRef, private renderer: Renderer2
-  ) { }
+  ) {
+    this.oliotaUtils = oliota
+  }
 
   ngOnInit() {
+
+    
+
     this.reloadData();
 
+    
+
     //return;
+
+    setTimeout(() => {
+      console.clear()
     ClassConsole.initClass()
     ClassSessionStorage.initClass()
-    ClassLocalStorage.initClass()  
+    ClassLocalStorage.initClass()
+    }, 5000);
 
   }
 
+  onRouterOutletActivate($event: any) {
+     
+    let rota = this.router.routerState.snapshot.url
+    rota = rota.startsWith('/') ? rota.substring(1, rota.length) : rota
+ 
+    let filtro: any = this.router.config.filter(obj => {
+      return obj.path == rota
+    })
+    
+    sessionStorage.setItem("componenteAtual", filtro[0].path);
+
+
+   
+
+  }
 
 
   reloadData() {
@@ -87,18 +117,46 @@ export class AppComponent implements OnInit {
     return mensagens[Math.floor(Math.random() * (max - min)) + min];
   }
 
-  switchMode(){ 
-    if(this.contador%2==0){
+  switchMode() {
+    if (this.contador % 2 == 0) {
       this.contador++;
       return;
     }
-    if(this.temaDark){
-      $('body').removeClass('dark-mode') 
-    }else{ 
-      $('body').addClass('dark-mode') 
+    if (this.temaDark) {
+      $('body').removeClass('dark-mode')
+    } else {
+      $('body').addClass('dark-mode')
     }
-    this.temaDark=!this.temaDark;
+    this.temaDark = !this.temaDark;
     this.contador++;
+  }
+
+
+  @HostListener('window:keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent) {
+    if ((event.metaKey || event.ctrlKey) && event.key === 'ç') {
+      event.preventDefault();
+      //  let modo_desenvolvedor: boolean = !JSON.parse(sessionStorage.getItem("modo_desenvolvedor"));
+
+      let modo_desenvolvedor: any = sessionStorage.getItem("modo_desenvolvedor")
+
+
+      modo_desenvolvedor = !JSON.parse(modo_desenvolvedor);
+       
+
+       
+      
+        //  this.toastrService.warning("Modo desenvolvedor habilitado <br/><hr/>Lembre-se de desativar quando não estiver mais precisando ver detalhes técnicos.");
+      
+
+
+      sessionStorage.setItem('modo_desenvolvedor', JSON.stringify(modo_desenvolvedor));
+      ClassConsole.log("Comando especial detectado , MODO DESENVOLVEDOR habilitado", 
+      "essa é uma função especial que detalha regras no console e tambem em tela. ",
+      "Por padrão é desabilitado no Inicio, mas lembre-se de desabilitar quando não precisar mais")
+
+    }
+
   }
 
 

@@ -17,7 +17,9 @@ import localePt from '@angular/common/locales/pt';
 import {registerLocaleData} from '@angular/common';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { DicasComponent } from './dicas/dicas.component';
-registerLocaleData(localePt, 'pt');
+import { UtilitariosComponent } from './utilitarios/utilitarios.component';
+import { CalculadoraCustosRendaInternacionalComponent } from './utilitarios/calculadora-custos-renda-internacional/calculadora-custos-renda-internacional.component';
+ registerLocaleData(localePt, 'pt');
 
 
 @NgModule({
@@ -28,6 +30,8 @@ registerLocaleData(localePt, 'pt');
     CursosComponent,
     CursoDetalheComponent,
     DicasComponent,
+    UtilitariosComponent,
+    CalculadoraCustosRendaInternacionalComponent
    // Nl2BrPipeModule
   ],
   imports: [
