@@ -48,13 +48,10 @@ export class AppComponent implements OnInit {
     
 
     //return;
-
-    setTimeout(() => {
-      console.clear()
+ 
     ClassConsole.initClass()
     ClassSessionStorage.initClass()
-    ClassLocalStorage.initClass()
-    }, 5000);
+    ClassLocalStorage.initClass() 
 
   }
 
