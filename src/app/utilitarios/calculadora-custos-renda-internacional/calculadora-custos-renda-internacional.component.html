@@ -11,7 +11,7 @@
 <section class="content">
   <div class="container-fluid">
     <base target="_blank" />
-<pre>{{rendas|json}}</pre>
+    <!-- <pre>{{ rendas | json }}</pre> -->
 
     <div class="card">
       <div class="card-body">
@@ -35,7 +35,9 @@
               <div class="col">
                 <input
                   type="radio"
+                  (change)="changeRadioRenda($event)"
                   id="radio_real"
+                  checked
                   name="radio_renda"
                   value="real"
                 />
@@ -44,8 +46,9 @@
                   <input
                     id="renda_real"
                     type="text"
-                    [(ngModel)]="rendas.real"
-                    (input)="changeRenda($event?.target)"
+                    [(ngModel)]="rendas.real.value"
+                    [disabled]="rendas.real.disabled"
+                    (input)="changeRenda($event)"
                     class="form-control campo_renda"
                     placeholder="Valor em reais"
                   />
@@ -55,6 +58,7 @@
               <div class="col">
                 <input
                   type="radio"
+                  (change)="changeRadioRenda($event)"
                   id="radio_euro"
                   name="radio_renda"
                   value="euro"
@@ -65,8 +69,9 @@
                   <input
                     id="renda_euro"
                     type="text"
-                    [(ngModel)]="rendas.euro"
-                    (input)="changeRenda($event?.target)"
+                    [(ngModel)]="rendas.euro.value"
+                    [disabled]="rendas.euro.disabled"
+                    (input)="changeRenda($event)"
                     class="form-control campo_renda"
                     placeholder="Valor em euro"
                   />
@@ -77,6 +82,7 @@
               <div class="col">
                 <input
                   type="radio"
+                  (change)="changeRadioRenda($event)"
                   id="radio_dolar"
                   name="radio_renda"
                   value="dolar"
@@ -87,8 +93,9 @@
                   <input
                     type="text"
                     id="renda_dolar"
-                    [(ngModel)]="rendas.dolar"
-                    (input)="changeRenda($event?.target)"
+                    [(ngModel)]="rendas.dolar.value"
+                    [disabled]="rendas.dolar.disabled"
+                    (input)="changeRenda($event)"
                     class="form-control campo_renda"
                     placeholder="Valor em dolar"
                     aria-label="Valor em dolar"
@@ -101,8 +108,10 @@
           <div class="card-footer">
             <div class="row">
               <div class="col">
-                <label for="conversao_real">Conversão REAL</label>
-                <div class="input-group mb-3">
+                <label for="conversao_real" [hidden]="!rendas.real.disabled"
+                  >Conversão REAL</label
+                >
+                <div class="input-group mb-3" [hidden]="!rendas.real.disabled">
                   <input
                     id="conversao_real"
                     type="text"
@@ -114,9 +123,11 @@
                 </div>
               </div>
               <div class="col">
-                <label for="conversao_euro">Conversão EURO</label>
+                <label for="conversao_euro" [hidden]="!rendas.euro.disabled"
+                  >Conversão EURO</label
+                >
 
-                <div class="input-group mb-3">
+                <div class="input-group mb-3" [hidden]="!rendas.euro.disabled">
                   <input
                     id="conversao_euro"
                     type="text"
@@ -129,9 +140,11 @@
               </div>
 
               <div class="col">
-                <label for="conversao_dolar">Coversão DOLAR</label>
+                <label for="conversao_dolar" [hidden]="!rendas.dolar.disabled"
+                  >Coversão DOLAR</label
+                >
 
-                <div class="input-group mb-3">
+                <div class="input-group mb-3" [hidden]="!rendas.dolar.disabled">
                   <input
                     type="text"
                     [(ngModel)]="rendas.conversoes.dolar"
