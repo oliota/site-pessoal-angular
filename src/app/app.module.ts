@@ -19,6 +19,17 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { DicasComponent } from './dicas/dicas.component';
 import { UtilitariosComponent } from './utilitarios/utilitarios.component';
 import { CalculadoraCustosRendaInternacionalComponent } from './utilitarios/calculadora-custos-renda-internacional/calculadora-custos-renda-internacional.component';
+import { CurrencyMaskConfig, CurrencyMaskModule, CURRENCY_MASK_CONFIG } from 'ng2-currency-mask';
+
+export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
+    align: "right",
+    allowNegative: true,
+    decimal: ",",
+    precision: 2,
+    prefix: "R$ ",
+    suffix: "",
+    thousands: "."
+};
  registerLocaleData(localePt, 'pt');
 
 
@@ -40,13 +51,14 @@ import { CalculadoraCustosRendaInternacionalComponent } from './utilitarios/calc
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    CurrencyMaskModule,
     MDBBootstrapModule.forRoot()
   ],
   providers: [
     {
       provide: LOCALE_ID,
       useValue: 'pt'
-  }
+  },{ provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig }
   ],
   bootstrap: [AppComponent]
 })

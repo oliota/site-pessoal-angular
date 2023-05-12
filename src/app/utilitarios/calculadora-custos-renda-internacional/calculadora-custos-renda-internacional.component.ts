@@ -11,7 +11,13 @@ import { ClassConsole } from 'src/app/easterEggs/ClassConsole';
 })
 export class CalculadoraCustosRendaInternacionalComponent implements OnInit {
 
-  valorInicial: number = 10000
+
+  chave_itens: any = "listaItens";
+  chave_rendas: any = "valoresRendas";
+  chave_renda_principal: any = "rendaPrincipal";
+  chave_cotacao: any = "cotacaoAtual";
+  valorInicial: number = 0
+  simbolo:any="R$"
   rendas: any = {
     real: { disabled: false, value: this.valorInicial },
     euro: { disabled: true, value: this.valorInicial },
@@ -27,7 +33,7 @@ export class CalculadoraCustosRendaInternacionalComponent implements OnInit {
   rendaPrincipal: any = "real"
 
   itens: any = []
-  item:any={}
+  item: any = {}
 
   oliotaUtils!: OliotaUtils
   constructor(oliota: OliotaUtils,
@@ -38,23 +44,82 @@ export class CalculadoraCustosRendaInternacionalComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     this.cotacaoService.getCotacaoes().subscribe((data: {}) => {
       this.cotacoes = data;
-      ClassConsole.log("getCotacaoes", this.cotacoes)
-      console.log("this.rendas.real.value", this.rendas.real.value);
+      console.log("cotação obtida online", this.cotacoes)
 
-      this.changeRenda(this.rendas.real.value)
+      localStorage.setItem(this.chave_cotacao, JSON.stringify(this.cotacoes));
+      
+
     }, (error: {}) => {
+
+
+      this.cotacoes = JSON.parse(localStorage.getItem(this.chave_cotacao) + "");
+      console.warn("erro em obter cotação online, obtedo a ultima cotação salva", this.cotacoes);
+
+    }, () => {
+      console.log("Apos obter as cotações, deve recuperar o localStorage",this.cotacoes);
+
+      this.recuperarLocalStorage()
+       
+      this.changeRenda(this.rendas.real.value)
 
     });
 
   }
 
 
-  changeRadioRenda(event: any) {
-    console.log("changeRadioRenda", event.target.value);
-    this.rendaPrincipal = event.target.value
+  recuperarLocalStorage() {
 
+    this.itens = JSON.parse(localStorage.getItem(this.chave_itens) + "");
+    if (!this.itens) {
+      this.itens = [];
+      localStorage.setItem(this.chave_itens, JSON.stringify(this.itens));
+    }
+    console.log("itens recuperados", this.itens);
+
+    this.rendas = JSON.parse(localStorage.getItem(this.chave_rendas) + "");
+    if (!this.rendas) {
+      this.rendas = {
+        real: { disabled: false, value: this.valorInicial },
+        euro: { disabled: true, value: this.valorInicial },
+        dolar: { disabled: true, value: this.valorInicial },
+        conversoes: {
+          real: 0,
+          euro: 0,
+          dolar: 0
+        }
+      }
+
+      localStorage.setItem(this.chave_rendas, JSON.stringify(this.rendas));
+    } 
+    
+    this.rendas.real.disabled = false;
+    this.rendas.euro.disabled = true;
+    this.rendas.dolar.disabled = true;
+    console.log("rendas recuperadas",JSON.parse(JSON.stringify(this.rendas)) );
+
+    // this.rendaPrincipal = JSON.parse(localStorage.getItem(this.chave_renda_principal) + "");
+    
+    // console.log("renda principal localStorage", this.rendaPrincipal);
+    // if (!this.rendaPrincipal) {
+    //   this.rendaPrincipal = "real";
+    //   localStorage.setItem(this.chave_renda_principal, JSON.stringify(this.rendaPrincipal));
+    // }
+    // console.log("renda principal recuperada", this.rendaPrincipal);
+
+    // this.changeRadioRenda(this.rendaPrincipal)
+
+
+  }
+
+
+  changeRadioRenda(event: any) {
+    this.rendaPrincipal = (event.target?.value)?(event.target?.value):event
+    console.log("changeRadioRenda", this.rendaPrincipal);
+
+    localStorage.setItem(this.chave_renda_principal, JSON.stringify(this.rendaPrincipal));
     // let valor: any = {
     //   target: {
     //     value: this.rendas[this.rendaPrincipal]
@@ -63,17 +128,21 @@ export class CalculadoraCustosRendaInternacionalComponent implements OnInit {
     this.changeRenda(this.rendas[this.rendaPrincipal].value)
     switch (this.rendaPrincipal) {
       case "real":
+        this.simbolo="R$"
         this.rendas.real.disabled = false;
         this.rendas.euro.disabled = true;
         this.rendas.dolar.disabled = true;
 
         break;
       case "euro":
+        
+      this.simbolo="€"
         this.rendas.real.disabled = true;
         this.rendas.euro.disabled = false;
         this.rendas.dolar.disabled = true;
         break;
       case "dolar":
+        this.simbolo="US$"
         this.rendas.real.disabled = true;
         this.rendas.euro.disabled = true;
         this.rendas.dolar.disabled = false;
@@ -83,6 +152,7 @@ export class CalculadoraCustosRendaInternacionalComponent implements OnInit {
         break;
     }
 
+    localStorage.setItem(this.chave_rendas, JSON.stringify(this.rendas));
 
 
   }
@@ -101,6 +171,7 @@ export class CalculadoraCustosRendaInternacionalComponent implements OnInit {
     this.rendas.conversoes.dolar = conversoes.dolar
 
 
+    localStorage.setItem(this.chave_rendas, JSON.stringify(this.rendas));
   }
 
   converterValor(valor: any) {
@@ -139,38 +210,46 @@ export class CalculadoraCustosRendaInternacionalComponent implements OnInit {
 
   }
 
-  adicionar(){
+  adicionar() {
 
+
+
+    let conversao: any = this.converterValor(this.item.value);
+
+    this.item.real = this.calcularPercentual(this.rendas.real, conversao.real)
+    this.item.euro = this.calcularPercentual(this.rendas.euro, conversao.euro)
+    this.item.dolar = this.calcularPercentual(this.rendas.dolar, conversao.dolar)
+
+    this.itens.push(Object.assign({}, this.item))
+    console.log("itens", this.itens);
+
+    this.item = {
+      value: 0
+    }
 
     
-    let conversao:any = this.converterValor(this.item.value );
-
-    this.item.real=this.calcularPercentual(this.rendas.real,conversao.real)
-    this.item.euro=this.calcularPercentual(this.rendas.euro,conversao.euro)
-    this.item.dolar=this.calcularPercentual(this.rendas.dolar,conversao.dolar) 
-
-    this.itens.push(Object.assign({}, this.item) )
-    console.log("itens",this.itens);
-    
-    this.item={}
+    localStorage.setItem(this.chave_itens, JSON.stringify(this.itens));
 
   }
 
-  calcularPercentual(renda:any,valorConvertido:any){
-    console.log("calcularPercentual",renda,valorConvertido)
-    renda=Number(renda.value.toString().replace(".","").replace(",","."))
-    valorConvertido=Number(valorConvertido.toString().replace(".","").replace(",","."))
+  calcularPercentual(renda: any, valorConvertido: any) {
+    console.log("calcularPercentual", renda, valorConvertido)
+    renda = Number(renda.value)
+    valorConvertido = Number(valorConvertido)
 
-    
-    if(renda && renda>0){
-      let calculo=(valorConvertido/renda)*100
-      console.log("calcularPercentual",valorConvertido,"/",renda,"*",100,"=",calculo);
+
+    if (renda && renda > 0) {
+      let calculo = (valorConvertido / renda) * 100
+      console.log("calcularPercentual", valorConvertido, "/", renda, "*", 100, "=", calculo);
       return {
-        conversao:valorConvertido.toFixed(2),
-        percentual:calculo.toFixed(2)
+        conversao: valorConvertido.toFixed(2),
+        percentual: calculo.toFixed(2)
       }
-    }else{ 
-      return null
+    } else {
+      return {
+        conversao: 0,
+        percentual: 0
+      }
     }
 
   }

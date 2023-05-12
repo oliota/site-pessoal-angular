@@ -11,6 +11,6 @@ export class CotacaoMonetariaService {
 
   getCotacaoes(): Observable<any> {
 
-    return this.http.get<any>('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL').pipe();
+    return this.http.get<any>('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL');
   }
 }

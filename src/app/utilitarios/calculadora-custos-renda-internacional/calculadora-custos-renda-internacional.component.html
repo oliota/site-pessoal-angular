@@ -46,11 +46,12 @@
                     <label for="renda_real">Renda REAL</label>
                     <div class="input-group mb-3">
                       <input
+                        currencyMask
                         id="renda_real"
                         type="text"
                         [(ngModel)]="rendas.real.value"
                         [disabled]="rendas.real.disabled"
-                        (input)="changeRenda($event)"
+                        (ngModelChange)="changeRenda($event)"
                         class="form-control campo_renda"
                         placeholder="Valor em reais"
                       />
@@ -69,11 +70,12 @@
 
                     <div class="input-group mb-3">
                       <input
+                        currencyMask
                         id="renda_euro"
                         type="text"
                         [(ngModel)]="rendas.euro.value"
                         [disabled]="rendas.euro.disabled"
-                        (input)="changeRenda($event)"
+                        (ngModelChange)="changeRenda($event)"
                         class="form-control campo_renda"
                         placeholder="Valor em euro"
                       />
@@ -93,11 +95,12 @@
 
                     <div class="input-group mb-3">
                       <input
+                        currencyMask
                         type="text"
                         id="renda_dolar"
                         [(ngModel)]="rendas.dolar.value"
                         [disabled]="rendas.dolar.disabled"
-                        (input)="changeRenda($event)"
+                        (ngModelChange)="changeRenda($event)"
                         class="form-control campo_renda"
                         placeholder="Valor em dolar"
                         aria-label="Valor em dolar"
@@ -118,6 +121,7 @@
                       [hidden]="!rendas.real.disabled"
                     >
                       <input
+                        currencyMask
                         id="conversao_real"
                         type="text"
                         [(ngModel)]="rendas.conversoes.real"
@@ -137,6 +141,7 @@
                       [hidden]="!rendas.euro.disabled"
                     >
                       <input
+                        currencyMask
                         id="conversao_euro"
                         type="text"
                         [(ngModel)]="rendas.conversoes.euro"
@@ -160,6 +165,7 @@
                     >
                       <input
                         type="text"
+                        currencyMask
                         [(ngModel)]="rendas.conversoes.dolar"
                         disabled
                         id="conversao_dolar"
@@ -200,25 +206,39 @@
                   <div class="card-header">
                     <h3 class="card-title"></h3>
 
-                    <div class="card-tools">
-                      <div class="input-group input-group-sm">
-                        <input
-                          type="text"
-                          [(ngModel)]="item.name"
-                          class="form-control"
-                          placeholder="Nome do item"
-                        />
-                        <input
-                          type="text"
-                          [(ngModel)]="item.value"
-                          class="form-control"
-                          placeholder="Valor do item"
-                        />
+                    <div class="card-tools col-4">
+                      <div class="row">
+                        <div class="col">
+                          <div class="input-group mb-3">
+                            <input
+                              type="text"
+                              [(ngModel)]="item.name"
+                              class="form-control"
+                              autocomplete="off"
+                              placeholder="Nome do item"
+                            />
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="input-group mb-3">
+                            <input
+                              currencyMask
+                              id="valor_item"
+                              type="text"
+                              [(ngModel)]="item.value"
+                              class="form-control campo_renda"
+                              placeholder="Valor do item"
+                            />
+                            <span class="input-group-text">{{ simbolo }}</span>
+                          </div>
+                        </div>
 
-                        <div class="input-group-append">
-                          <span (click)="adicionar()" class="btn btn-default"
-                            >Adicionar <i class="fas fa-plus"></i
-                          ></span>
+                        <div class="col">
+                          <div class="input-group mb-3">
+                            <button (click)="adicionar()" [disabled]="!item.name || !item.value " class="btn btn-success"
+                              >Adicionar <i class="fas fa-plus"></i
+                            ></button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -229,13 +249,39 @@
                       <thead>
                         <tr>
                           <th>Nome</th>
-                          <th>Valor</th>
+                          <th>Valor informado</th>
+                          <th class="bg-success disabled">Conversão em Real</th>
+                          <th class="bg-success disabled">Renda Real%</th>
+                          <th class="bg-danger disabled">Conversão em Euro</th>
+                          <th class="bg-danger disabled">Renda Euro%</th>
+                          <th class="bg-primary disabled">
+                            Conversão em Dolar
+                          </th>
+                          <th class="bg-primary disabled">Renda Dolar%</th>
                         </tr>
                       </thead>
-                      <tbody *ngIf="itens.length>0">
+                      <tbody *ngIf="itens.length > 0">
                         <tr *ngFor="let item of itens">
                           <td>{{ item.name }}</td>
-                          <td>{{ item.value}}</td>
+                          <td>{{ item.value }}</td>
+                          <td class="bg-success disabled">
+                            {{ item.real.conversao }}
+                          </td>
+                          <td class="bg-success disabled">
+                            {{ item.real.percentual }}
+                          </td>
+                          <td class="bg-danger disabled">
+                            {{ item.euro.conversao }}
+                          </td>
+                          <td class="bg-danger disabled">
+                            {{ item.euro.percentual }}
+                          </td>
+                          <td class="bg-primary disabled">
+                            {{ item.dolar.conversao }}
+                          </td>
+                          <td class="bg-primary disabled">
+                            {{ item.dolar.percentual }}
+                          </td>
                         </tr>
                       </tbody>
                     </table>
