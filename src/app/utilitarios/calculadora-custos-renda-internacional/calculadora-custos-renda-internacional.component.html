@@ -13,12 +13,175 @@
     <base target="_blank" />
     <!-- <pre>{{ rendas | json }}</pre> -->
 
-    <div class="card">
-      <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <span> Rendas </span>
+                </div>
+                <div class="card-tools">
+                  <button
+                    type="button"
+                    class="btn btn-tool"
+                    data-card-widget="collapse"
+                  >
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <input
+                      type="radio"
+                      (change)="changeRadioRenda($event)"
+                      id="radio_real"
+                      checked
+                      name="radio_renda"
+                      value="real"
+                    />
+                    <label for="renda_real">Renda REAL</label>
+                    <div class="input-group mb-3">
+                      <input
+                        id="renda_real"
+                        type="text"
+                        [(ngModel)]="rendas.real.value"
+                        [disabled]="rendas.real.disabled"
+                        (input)="changeRenda($event)"
+                        class="form-control campo_renda"
+                        placeholder="Valor em reais"
+                      />
+                      <span class="input-group-text" id="basic-addon2">R$</span>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <input
+                      type="radio"
+                      (change)="changeRadioRenda($event)"
+                      id="radio_euro"
+                      name="radio_renda"
+                      value="euro"
+                    />
+                    <label for="renda_euro">Renda EURO</label>
+
+                    <div class="input-group mb-3">
+                      <input
+                        id="renda_euro"
+                        type="text"
+                        [(ngModel)]="rendas.euro.value"
+                        [disabled]="rendas.euro.disabled"
+                        (input)="changeRenda($event)"
+                        class="form-control campo_renda"
+                        placeholder="Valor em euro"
+                      />
+                      <span class="input-group-text">€</span>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <input
+                      type="radio"
+                      (change)="changeRadioRenda($event)"
+                      id="radio_dolar"
+                      name="radio_renda"
+                      value="dolar"
+                    />
+                    <label for="renda_dolar">Renda DOLAR</label>
+
+                    <div class="input-group mb-3">
+                      <input
+                        type="text"
+                        id="renda_dolar"
+                        [(ngModel)]="rendas.dolar.value"
+                        [disabled]="rendas.dolar.disabled"
+                        (input)="changeRenda($event)"
+                        class="form-control campo_renda"
+                        placeholder="Valor em dolar"
+                        aria-label="Valor em dolar"
+                      />
+                      <span class="input-group-text">US$</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="row">
+                  <div class="col">
+                    <label for="conversao_real" [hidden]="!rendas.real.disabled"
+                      >Conversão REAL</label
+                    >
+                    <div
+                      class="input-group mb-3"
+                      [hidden]="!rendas.real.disabled"
+                    >
+                      <input
+                        id="conversao_real"
+                        type="text"
+                        [(ngModel)]="rendas.conversoes.real"
+                        disabled
+                        class="form-control conversao"
+                      />
+                      <span class="input-group-text">R$</span>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <label for="conversao_euro" [hidden]="!rendas.euro.disabled"
+                      >Conversão EURO</label
+                    >
+
+                    <div
+                      class="input-group mb-3"
+                      [hidden]="!rendas.euro.disabled"
+                    >
+                      <input
+                        id="conversao_euro"
+                        type="text"
+                        [(ngModel)]="rendas.conversoes.euro"
+                        disabled
+                        class="form-control conversao"
+                      />
+                      <span class="input-group-text">€</span>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <label
+                      for="conversao_dolar"
+                      [hidden]="!rendas.dolar.disabled"
+                      >Coversão DOLAR</label
+                    >
+
+                    <div
+                      class="input-group mb-3"
+                      [hidden]="!rendas.dolar.disabled"
+                    >
+                      <input
+                        type="text"
+                        [(ngModel)]="rendas.conversoes.dolar"
+                        disabled
+                        id="conversao_dolar"
+                        class="form-control conversao"
+                      />
+                      <span class="input-group-text">US$</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
         <div class="card">
           <div class="card-header">
             <div class="card-title">
-              <span> Rendas </span>
+              <span> Itens </span>
             </div>
             <div class="card-tools">
               <button
@@ -33,126 +196,51 @@
           <div class="card-body">
             <div class="row">
               <div class="col">
-                <input
-                  type="radio"
-                  (change)="changeRadioRenda($event)"
-                  id="radio_real"
-                  checked
-                  name="radio_renda"
-                  value="real"
-                />
-                <label for="renda_real">Renda REAL</label>
-                <div class="input-group mb-3">
-                  <input
-                    id="renda_real"
-                    type="text"
-                    [(ngModel)]="rendas.real.value"
-                    [disabled]="rendas.real.disabled"
-                    (input)="changeRenda($event)"
-                    class="form-control campo_renda"
-                    placeholder="Valor em reais"
-                  />
-                  <span class="input-group-text" id="basic-addon2">R$</span>
-                </div>
-              </div>
-              <div class="col">
-                <input
-                  type="radio"
-                  (change)="changeRadioRenda($event)"
-                  id="radio_euro"
-                  name="radio_renda"
-                  value="euro"
-                />
-                <label for="renda_euro">Renda EURO</label>
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title"></h3>
 
-                <div class="input-group mb-3">
-                  <input
-                    id="renda_euro"
-                    type="text"
-                    [(ngModel)]="rendas.euro.value"
-                    [disabled]="rendas.euro.disabled"
-                    (input)="changeRenda($event)"
-                    class="form-control campo_renda"
-                    placeholder="Valor em euro"
-                  />
-                  <span class="input-group-text">€</span>
-                </div>
-              </div>
+                    <div class="card-tools">
+                      <div class="input-group input-group-sm">
+                        <input
+                          type="text"
+                          [(ngModel)]="item.name"
+                          class="form-control"
+                          placeholder="Nome do item"
+                        />
+                        <input
+                          type="text"
+                          [(ngModel)]="item.value"
+                          class="form-control"
+                          placeholder="Valor do item"
+                        />
 
-              <div class="col">
-                <input
-                  type="radio"
-                  (change)="changeRadioRenda($event)"
-                  id="radio_dolar"
-                  name="radio_renda"
-                  value="dolar"
-                />
-                <label for="renda_dolar">Renda DOLAR</label>
-
-                <div class="input-group mb-3">
-                  <input
-                    type="text"
-                    id="renda_dolar"
-                    [(ngModel)]="rendas.dolar.value"
-                    [disabled]="rendas.dolar.disabled"
-                    (input)="changeRenda($event)"
-                    class="form-control campo_renda"
-                    placeholder="Valor em dolar"
-                    aria-label="Valor em dolar"
-                  />
-                  <span class="input-group-text">US$</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer">
-            <div class="row">
-              <div class="col">
-                <label for="conversao_real" [hidden]="!rendas.real.disabled"
-                  >Conversão REAL</label
-                >
-                <div class="input-group mb-3" [hidden]="!rendas.real.disabled">
-                  <input
-                    id="conversao_real"
-                    type="text"
-                    [(ngModel)]="rendas.conversoes.real"
-                    disabled
-                    class="form-control conversao"
-                  />
-                  <span class="input-group-text">R$</span>
-                </div>
-              </div>
-              <div class="col">
-                <label for="conversao_euro" [hidden]="!rendas.euro.disabled"
-                  >Conversão EURO</label
-                >
-
-                <div class="input-group mb-3" [hidden]="!rendas.euro.disabled">
-                  <input
-                    id="conversao_euro"
-                    type="text"
-                    [(ngModel)]="rendas.conversoes.euro"
-                    disabled
-                    class="form-control conversao"
-                  />
-                  <span class="input-group-text">€</span>
-                </div>
-              </div>
-
-              <div class="col">
-                <label for="conversao_dolar" [hidden]="!rendas.dolar.disabled"
-                  >Coversão DOLAR</label
-                >
-
-                <div class="input-group mb-3" [hidden]="!rendas.dolar.disabled">
-                  <input
-                    type="text"
-                    [(ngModel)]="rendas.conversoes.dolar"
-                    disabled
-                    id="conversao_dolar"
-                    class="form-control conversao"
-                  />
-                  <span class="input-group-text">US$</span>
+                        <div class="input-group-append">
+                          <span (click)="adicionar()" class="btn btn-default"
+                            >Adicionar <i class="fas fa-plus"></i
+                          ></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body table-responsive p-0">
+                    <table class="table table-hover text-nowrap">
+                      <thead>
+                        <tr>
+                          <th>Nome</th>
+                          <th>Valor</th>
+                        </tr>
+                      </thead>
+                      <tbody *ngIf="itens.length>0">
+                        <tr *ngFor="let item of itens">
+                          <td>{{ item.name }}</td>
+                          <td>{{ item.value}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /.card-body -->
                 </div>
               </div>
             </div>
