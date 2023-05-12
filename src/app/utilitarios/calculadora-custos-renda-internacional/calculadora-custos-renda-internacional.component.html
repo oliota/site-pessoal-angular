@@ -34,7 +34,7 @@
               </div>
               <div class="card-body">
                 <div class="row">
-                  <div class="col">
+                  <div class="col-sm-4">
                     <input
                       type="radio"
                       (change)="changeRadioRenda($event)"
@@ -58,7 +58,7 @@
                       <span class="input-group-text" id="basic-addon2">R$</span>
                     </div>
                   </div>
-                  <div class="col">
+                  <div class="col-sm-4">
                     <input
                       type="radio"
                       (change)="changeRadioRenda($event)"
@@ -83,7 +83,7 @@
                     </div>
                   </div>
 
-                  <div class="col">
+                  <div class="col-sm-4">
                     <input
                       type="radio"
                       (change)="changeRadioRenda($event)"
@@ -112,7 +112,7 @@
               </div>
               <div class="card-footer">
                 <div class="row">
-                  <div class="col">
+                  <div class="col-sm-4">
                     <label for="conversao_real" [hidden]="!rendas.real.disabled"
                       >Conversão REAL</label
                     >
@@ -131,7 +131,7 @@
                       <span class="input-group-text">R$</span>
                     </div>
                   </div>
-                  <div class="col">
+                  <div class="col-sm-4">
                     <label for="conversao_euro" [hidden]="!rendas.euro.disabled"
                       >Conversão EURO</label
                     >
@@ -152,7 +152,7 @@
                     </div>
                   </div>
 
-                  <div class="col">
+                  <div class="col-sm-4">
                     <label
                       for="conversao_dolar"
                       [hidden]="!rendas.dolar.disabled"
@@ -206,7 +206,7 @@
                   <div class="card-header">
                     <h3 class="card-title">
                       <div class="row">
-                        <div class="col">
+                        <div class="col-sm-4">
                           <div class="input-group mb-3">
                             <input
                               type="text"
@@ -217,21 +217,23 @@
                             />
                           </div>
                         </div>
-                        <div class="col">
+                        <div class="col-sm-4">
                           <div class="input-group mb-3">
                             <input
                               currencyMask
+                              [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false}"
                               id="valor_item"
                               type="text"
                               [(ngModel)]="item.value"
+                              
                               class="form-control campo_renda"
                               placeholder="Valor do item"
                             />
-                            <span class="input-group-text">{{ simbolo }}</span>
+                            <span class="input-group-text">{{ simbolo.prefix }}</span>
                           </div>
                         </div>
 
-                        <div class="col">
+                        <div class="col-sm-4">
                           <div class="input-group mb-3">
                             <button (click)="adicionar()" [disabled]="!item.name || !item.value " class="btn btn-success"
                               >Adicionar <i class="fas fa-plus"></i
@@ -248,22 +250,29 @@
                     <table class="table table-hover text-nowrap">
                       <thead>
                         <tr>
+                          <th></th>
                           <th>Nome</th>
                           <th>Valor informado</th>
-                          <th class="bg-success disabled">Conversão em Real</th>
-                          <th class="bg-success disabled">Renda Real%</th>
-                          <th class="bg-danger disabled">Conversão em Euro</th>
-                          <th class="bg-danger disabled">Renda Euro%</th>
+                          <th class="bg-success disabled">Real</th>
+                          <th class="bg-success disabled">Real%</th>
+                          <th class="bg-danger disabled">Euro</th>
+                          <th class="bg-danger disabled">Euro%</th>
                           <th class="bg-primary disabled">
-                            Conversão em Dolar
+                            Dolar
                           </th>
-                          <th class="bg-primary disabled">Renda Dolar%</th>
+                          <th class="bg-primary disabled">Dolar%</th>
                         </tr>
                       </thead>
                       <tbody *ngIf="itens.length > 0">
-                        <tr *ngFor="let item of itens">
-                          <td>{{ item.name }}</td>
-                          <td>{{ item.value }}</td>
+                        <tr *ngFor="let item of itens" >
+                          <td>
+                            <button class="btn btn-danger btn-sm" (click)="excluir(item.id)">
+                              <i class="fas fa-minus"></i>
+                            </button>
+                          </td>
+                          <td>{{ item.name }}</td> 
+                          <td>{{ item.value }}</td> 
+                          <!-- <td ><div [ngbTooltip]="rendasOriginais(item.rendasOriginais)">{{item.value | currency:item.simbolo.sigla:'symbol':'1.2-2'}}</div> </td> -->
                           <td class="bg-success disabled">
                             {{ item.real.conversao }}
                           </td>

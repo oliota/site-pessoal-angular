@@ -17,7 +17,10 @@ export class CalculadoraCustosRendaInternacionalComponent implements OnInit {
   chave_renda_principal: any = "rendaPrincipal";
   chave_cotacao: any = "cotacaoAtual";
   valorInicial: number = 0
-  simbolo:any="R$"
+  simbolo:any={
+    prefix:"R$",
+    sigla:"BRL"
+  }
   rendas: any = {
     real: { disabled: false, value: this.valorInicial },
     euro: { disabled: true, value: this.valorInicial },
@@ -128,21 +131,29 @@ export class CalculadoraCustosRendaInternacionalComponent implements OnInit {
     this.changeRenda(this.rendas[this.rendaPrincipal].value)
     switch (this.rendaPrincipal) {
       case "real":
-        this.simbolo="R$"
+        this.simbolo={
+          prefix:"R$",
+          sigla:"BRL"
+        }
         this.rendas.real.disabled = false;
         this.rendas.euro.disabled = true;
         this.rendas.dolar.disabled = true;
 
         break;
       case "euro":
-        
-      this.simbolo="€"
+        this.simbolo={
+          prefix:"€",
+          sigla:"EUR"
+        } 
         this.rendas.real.disabled = true;
         this.rendas.euro.disabled = false;
         this.rendas.dolar.disabled = true;
         break;
       case "dolar":
-        this.simbolo="US$"
+        this.simbolo={
+          prefix:"US$",
+          sigla:"USD"
+        }  
         this.rendas.real.disabled = true;
         this.rendas.euro.disabled = true;
         this.rendas.dolar.disabled = false;
@@ -178,7 +189,7 @@ export class CalculadoraCustosRendaInternacionalComponent implements OnInit {
     let retorno: any = {};
     console.log("converterValor", valor);
 
-    valor = Number(valor.toString().replace(".", "").replace(",", "."))
+    valor = Number(valor)
 
     console.log("converterValor", valor);
 
@@ -216,9 +227,17 @@ export class CalculadoraCustosRendaInternacionalComponent implements OnInit {
 
     let conversao: any = this.converterValor(this.item.value);
 
+    this.item.id=new Date().getTime()
     this.item.real = this.calcularPercentual(this.rendas.real, conversao.real)
     this.item.euro = this.calcularPercentual(this.rendas.euro, conversao.euro)
     this.item.dolar = this.calcularPercentual(this.rendas.dolar, conversao.dolar)
+    this.item.simbolo=this.simbolo
+
+    this.item.rendasOriginais={
+      real:this.rendas.real.value,
+      euro:this.rendas.euro.value,
+      dolar:this.rendas.dolar.value
+    }
 
     this.itens.push(Object.assign({}, this.item))
     console.log("itens", this.itens);
@@ -230,6 +249,11 @@ export class CalculadoraCustosRendaInternacionalComponent implements OnInit {
     
     localStorage.setItem(this.chave_itens, JSON.stringify(this.itens));
 
+  }
+
+  excluir(id:any){
+    this.itens = this.itens.filter((item:any) => item.id !== id);
+    localStorage.setItem(this.chave_itens, JSON.stringify(this.itens));
   }
 
   calcularPercentual(renda: any, valorConvertido: any) {
@@ -252,6 +276,13 @@ export class CalculadoraCustosRendaInternacionalComponent implements OnInit {
       }
     }
 
+  }
+
+  rendasOriginais(rendas:any):string{
+return `Valores válidos para \as rendas existentes \no momento do calculo
+Real:${rendas.real}
+Euro:${rendas.euro}
+Dolar:${rendas.dolar}`
   }
 
 

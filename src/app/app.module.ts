@@ -1,4 +1,6 @@
-import { NgModule } from '@angular/core';
+
+import localeBr from '@angular/common/locales/pt';
+import { CUSTOM_ELEMENTS_SCHEMA,LOCALE_ID,NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from  '@angular/common/http';
@@ -11,10 +13,9 @@ import { CvComponent } from './cv/cv.component';
 import { CursosComponent } from './cursos/cursos.component';
 import { CursoDetalheComponent } from './crud/curso-detalhe/curso-detalhe.component';
 
-
-import {LOCALE_ID} from '@angular/core';
+ 
 import localePt from '@angular/common/locales/pt';
-import {registerLocaleData} from '@angular/common';
+import {CommonModule, registerLocaleData} from '@angular/common';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { DicasComponent } from './dicas/dicas.component';
 import { UtilitariosComponent } from './utilitarios/utilitarios.component';
@@ -26,7 +27,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     allowNegative: true,
     decimal: ",",
     precision: 2,
-    prefix: "R$ ",
+    prefix: "",
     suffix: "",
     thousands: "."
 };
@@ -48,6 +49,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CommonModule ,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -59,7 +61,8 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
       provide: LOCALE_ID,
       useValue: 'pt'
   },{ provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig }
-  ],
+  ], 
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
