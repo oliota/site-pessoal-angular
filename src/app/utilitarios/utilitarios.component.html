@@ -12,7 +12,37 @@
     <div class="container-fluid">
       <base target="_blank" />
   
-      <div class="card collapsed-card">
+
+      <div *ngFor="let utilidade of utilidades" class="card collapsed-card">
+        <div class="card-header">
+          <div class="card-title">
+            <span>
+              <a [routerLink]="utilidade.route">
+                {{utilidade.name}} 
+                <i class="fas fa-link"></i>
+              </a>
+            </span>
+          </div>
+          <div class="card-tools">
+            <button
+              type="button"
+              class="btn btn-tool"
+              data-card-widget="collapse"
+            >
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="col">
+            <pre>{{utilidade.description}}</pre>
+            
+          </div>
+        </div>
+      </div>
+
+
+      <!-- <div class="card collapsed-card">
         <div class="card-header">
           <div class="card-title">
             <span>
@@ -60,17 +90,9 @@
         <div class="card-body">
           <div class="col">item</div>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
   
-  <div style="position: fixed; right: 50px; top: 85%; z-index: 900">
-    <button
-      class="btn btn-info rounded-circle"
-      style="padding: 8px 10px 8px 10px; width: 50px; height: 50px; z-index: 900"
-      (click)="oliotaUtils.scrollTo('topo')"
-    >
-      <i class="icon fas fa-arrow-up"></i>
-    </button>
-  </div>
+ 
   

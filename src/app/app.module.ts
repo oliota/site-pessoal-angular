@@ -21,7 +21,7 @@ import { DicasComponent } from './dicas/dicas.component';
 import { UtilitariosComponent } from './utilitarios/utilitarios.component';
 import { CalculadoraCustosRendaInternacionalComponent } from './utilitarios/calculadora-custos-renda-internacional/calculadora-custos-renda-internacional.component';
 import { CurrencyMaskConfig, CurrencyMaskModule, CURRENCY_MASK_CONFIG } from 'ng2-currency-mask';
-
+ 
 export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     align: "right",
     allowNegative: true,
@@ -53,7 +53,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    CurrencyMaskModule,
+    CurrencyMaskModule, 
     MDBBootstrapModule.forRoot()
   ],
   providers: [

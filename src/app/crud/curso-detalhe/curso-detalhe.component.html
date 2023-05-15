@@ -63,10 +63,10 @@
               <div class="widget-user-header disabled bg-info  progress-bar-striped ">
                 <ng-container *ngFor="let aula of detalhe.datas ; let i = index"> 
                   <a *ngIf="isToday(aula)" class="bg-warning progress-bar-striped rounded ml-2 p-1 atalho" (click)="scrollTo('aula'+i)" [title]="gerarTitle(aula)"  > 
-                    {{ i+1<=9 ?'&nbsp;'+(i+1):i+1 }}º 
+                    {{ equilibrarDezena(i) }}º 
                 </a> 
                 <a *ngIf="!isToday(aula)" class="bg-dark progress-bar-striped rounded ml-2 p-1 atalho" (click)="scrollTo('aula'+i)" [title]="gerarTitle(aula)"  > 
-                  {{ i+1<=9 ?'&nbsp;'+(i+1):i+1 }}º 
+                  {{ equilibrarDezena(i) }}º 
               </a>
               </ng-container>
                 <h3 class="widget-user-username">{{aula.data | date:'dd/MM/yyyy - EEEE'}}</h3>
@@ -234,10 +234,3 @@
 
 <br><br>
 
-<div style="position: fixed; right:50px;top:85%;">
-  <button class="btn btn-info rounded-circle " style="padding: 8px 10px 8px 10px;
-  width: 50px;
-  height: 50px;" (click)="scrollTo('topo')">
-     <i class="icon fas fa-arrow-up"></i>  
-  </button>
-  </div>

@@ -4,6 +4,8 @@
       <div class="col-sm-6">
         <h1 class="m-0">Calculadora de custos em renda internacional</h1>
       </div>
+      
+     
     </div>
   </div>
 </div>
@@ -264,29 +266,31 @@
                         </tr>
                       </thead>
                       <tbody *ngIf="itens.length > 0">
-                        <tr *ngFor="let item of itens" >
+                        <tr *ngFor="let item of itens"  [title]="rendasOriginais(item.rendasOriginais)">
                           <td>
-                            <button class="btn btn-danger btn-sm" (click)="excluir(item.id)">
-                              <i class="fas fa-minus"></i>
+                            <button class="btn btn-danger btn-sm pt-0 pb-0" (click)="excluir(item.id)">
+                              <i class="fas fa-trash"></i>
                             </button>
                           </td>
                           <td>{{ item.name }}</td> 
-                          <td>{{ item.value }}</td> 
-                          <!-- <td ><div [ngbTooltip]="rendasOriginais(item.rendasOriginais)">{{item.value | currency:item.simbolo.sigla:'symbol':'1.2-2'}}</div> </td> -->
+                          <!-- <td>{{ item.value }}</td>  -->
+                          <td > {{item.value | currency:item.simbolo.sigla:'symbol':'1.2-2'}}  </td>
                           <td class="bg-success disabled">
-                            {{ item.real.conversao }}
+                            {{item.real.conversao | currency:'BRL':'symbol':'1.2-2'}} 
                           </td>
                           <td class="bg-success disabled">
                             {{ item.real.percentual }}
                           </td>
                           <td class="bg-danger disabled">
-                            {{ item.euro.conversao }}
+                            
+                            {{item.euro.conversao | currency:'EUR':'symbol':'1.2-2'}}  
                           </td>
                           <td class="bg-danger disabled">
                             {{ item.euro.percentual }}
                           </td>
                           <td class="bg-primary disabled">
-                            {{ item.dolar.conversao }}
+                            
+                            {{item.dolar.conversao | currency:'USD':'symbol':'1.2-2'}}  
                           </td>
                           <td class="bg-primary disabled">
                             {{ item.dolar.percentual }}
@@ -306,12 +310,4 @@
   </div>
 </section>
 
-<div style="position: fixed; right: 50px; top: 85%; z-index: 900">
-  <button
-    class="btn btn-info rounded-circle"
-    style="padding: 8px 10px 8px 10px; width: 50px; height: 50px; z-index: 900"
-    (click)="oliotaUtils.scrollTo('topo')"
-  >
-    <i class="icon fas fa-arrow-up"></i>
-  </button>
-</div>
+

@@ -137,6 +137,10 @@ return new Date(aula.data).toISOString().slice(0, 10)==new Date().toISOString().
 
   }
 
+  equilibrarDezena(i:any){
+    return i+1<=9 ?' '+(i+1):i+1
+  }
+
 }
 
 
