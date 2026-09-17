@@ -1,0 +1,2 @@
+import { Component, inject } from '@angular/core';import { AsyncPipe } from '@angular/common';import { RouterLink } from '@angular/router';import { MatButtonModule } from '@angular/material/button';import { MatIconModule } from '@angular/material/icon';import { ContentService } from '../../core/services/content.service';
+@Component({standalone:true,imports:[AsyncPipe,RouterLink,MatButtonModule,MatIconModule],templateUrl:'./home.component.html',styleUrl:'./home.component.scss'}) export class HomeComponent{readonly content=inject(ContentService)}

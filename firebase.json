@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/oliota-angular",
+    "public": "dist/site-pessoal-angular/browser",
     "ignore": [
       "firebase.json",
       "**/.*",

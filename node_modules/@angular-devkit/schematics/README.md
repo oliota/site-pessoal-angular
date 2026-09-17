@@ -10,20 +10,21 @@ What distinguishes Schematics from other generators, such as Yeoman or Yarn Crea
 
 # Glossary
 
-| Term           | Description                                                                                                                                                                  |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Schematics** | A generator that executes descriptive code without side effects on an existing file system.                                                                                  |
-| **Collection** | A list of schematics metadata. Schematics can be referred by name inside a collection.                                                                                       |
-| **Tool**       | The code using the Schematics library.                                                                                                                                       |
-| **Tree**       | A staging area for changes, containing the original file system, and a list of changes to apply to it.                                                                       |
-| **Rule**       | A function that applies actions to a `Tree`. It returns a new `Tree` that will contain all transformations to be applied.                                                    |
-| **Source**     | A function that creates an entirely new `Tree` from an empty filesystem. For example, a file source could read files from disk and create a Create Action for each of those. |
-| **Action**     | An atomic operation to be validated and committed to a filesystem or a `Tree`. Actions are created by schematics.                                                            |
-| **Sink**       | The final destination of all `Action`s.                                                                                                                                      |
+| Term           | Description                                                                                                                                                                                                                                                                                                                 |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Schematics** | A generator that executes descriptive code without side effects on an existing file system.                                                                                                                                                                                                                                 |
+| **Collection** | A list of schematics metadata. Schematics can be referred by name inside a collection.                                                                                                                                                                                                                                      |
+| **Tool**       | The code using the Schematics library.                                                                                                                                                                                                                                                                                      |
+| **Tree**       | A staging area for changes, containing the original file system, and a list of changes to apply to it.                                                                                                                                                                                                                      |
+| **Rule**       | A function that applies actions to a `Tree`. It returns a new `Tree` that will contain all transformations to be applied.                                                                                                                                                                                                   |
+| **Source**     | A function that creates an entirely new `Tree` from an empty filesystem. For example, a file source could read files from disk and create a Create Action for each of those.                                                                                                                                                |
+| **Action**     | An atomic operation to be validated and committed to a filesystem or a `Tree`. Actions are created by schematics.                                                                                                                                                                                                           |
+| **Sink**       | The final destination of all `Action`s.                                                                                                                                                                                                                                                                                     |
+| **Task**       | A Task is a way to execute an external command or script in a schematic. A Task can be used to perform actions such as installing dependencies, running tests, or building a project. A Task is created by using the `SchematicContext` object and can be scheduled to run before or after the schematic `Tree` is applied. |
 
 # Tooling
 
-Schematics is a library, and does not work by itself. A [reference CLI](https://github.com/angular/angular-cli/blob/master/packages/angular_devkit/schematics_cli/bin/schematics.ts) is available on this repository, and is published on NPM at [@angular-devkit/schematics-cli](https://www.npmjs.com/package/@angular-devkit/schematics-cli). This document explains the library usage and the tooling API, but does not go into the tool implementation itself.
+Schematics is a library, and does not work by itself. A [reference CLI](https://github.com/angular/angular-cli/blob/main/packages/angular_devkit/schematics_cli/bin/schematics.ts) is available on this repository, and is published on NPM at [@angular-devkit/schematics-cli](https://www.npmjs.com/package/@angular-devkit/schematics-cli). This document explains the library usage and the tooling API, but does not go into the tool implementation itself.
 
 The tooling is responsible for the following tasks:
 
@@ -124,7 +125,7 @@ The system operates on placeholders defined inside files or their paths as loade
 | Placeholder         | Description                                                                                                                                 |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | `<%= expression %>` | Replaced with the result of the call of the given expression. This only supports direct expressions, no structural (for/if/...) JavaScript. |
-| `<%- expression %>` | Same as above, but the value of the result will be escaped for HTML when inserted (i.e. replacing '<' with '&lt;')                          |
+| `<%- expression %>` | Same as above, but the value of the result will be escaped for HTML when inserted (i.e. replacing '<' with '\&lt;')                         |
 | `<% inline code %>` | Inserts the given code into the template structure, allowing to insert structural JavaScript.                                               |
 | `<%# text %>`       | A comment, which gets entirely dropped.                                                                                                     |
 

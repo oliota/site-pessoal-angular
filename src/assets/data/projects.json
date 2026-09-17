@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Eliane Organizada",
+    "description": "Aplicação web responsiva para visualizar e organizar escalas mensais, com calendário, múltiplos colaboradores, ajustes e importação estruturada de dados.",
+    "technologies": [
+      "JavaScript",
+      "Node.js",
+      "Firebase",
+      "Heroku"
+    ],
+    "status": "Em evolução",
+    "link": {
+      "label": "Abrir projeto",
+      "url": "https://heroku-frontend-nodejs-8bbe5ba4674a.herokuapp.com/elianeOrganizada",
+      "type": "external",
+      "target": "same"
+    }
+  },
+  {
+    "name": "Silksong Wishboard Widget",
+    "description": "Widget desktop para organizar e acompanhar desejos, colecionáveis e objetivos em um quadro interativo personalizável.",
+    "technologies": [
+      "Desktop UI",
+      "JavaScript",
+      "GitHub"
+    ],
+    "status": "Open source",
+    "link": {
+      "label": "Abrir projeto",
+      "url": "https://github.com/oliota/silksong-wishboard-widget",
+      "type": "external",
+      "target": "new"
+    }
+  },
+  {
+    "name": "4 Elementos",
+    "description": "Projeto autoral de jogo 3D com combate elemental, exploração, progressão diegética e prototipagem de sistemas em Godot.",
+    "technologies": [
+      "Godot",
+      "GDScript",
+      "3D",
+      "Game Design"
+    ],
+    "status": "Protótipo"
+  },
+  {
+    "name": "Site pessoal",
+    "description": "Esta própria experiência: portfólio modular em Angular moderno, com conteúdo desacoplado em JSON e preparado para futura integração com API.",
+    "technologies": [
+      "Angular 22",
+      "Material 3",
+      "TypeScript",
+      "JSON"
+    ],
+    "status": "v2"
+  }
+]

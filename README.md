@@ -1,29 +1,35 @@
-# OliotaAngular
+# Rubem Oliota — Personal Site v2
 
-Novo site pessoal desenvolvido em angular
+Modern rewrite of the personal portfolio using Angular 22, standalone components and Material Design 3 principles.
 
-## Subindo o servidor
+## Requirements
 
-execute o comando `ng serve --port 5000` . Link para testar `http://localhost:5000/`.
+- Node.js 22.22.3+
+- npm 10+
+
+## Local development
+
+```powershell
+npm.cmd install
+npm.cmd start
+```
+
+Open `http://localhost:5000`.
+
+## Content
+
+Public portfolio content is isolated in `src/assets/data/*.json`. Components consume it through `ContentService`. This keeps the UI independent from the data source and makes a later migration from local JSON to the Node/Heroku API straightforward.
+
+## Structure
+
+- `core/models`: shared data contracts
+- `core/services`: content access
+- `features`: route-level standalone pages
+- `assets/data`: editable JSON content
+- `assets/img`: local images
 
 ## Build
 
-Execute `ng build` o conteudo sera gerado no diretorio `dist/`
-
-## Esse comando so deve ser executado se a página esta hospedada no firebase hosting
-
-Execute 
-
-`npm install -g firebase-tools`
-
-`npm install admin-lte@^3.0 --save`
-
-`npm i --save-dev @types/jquery`
-
-`npm i @types/jquery`
-
-`firebase deploy`
-
-## Link para o repositorio
-
-<https://github.com/oliota/site-pessoal-angular>
+```powershell
+npm.cmd run build
+```

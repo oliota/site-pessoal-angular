@@ -1,0 +1,1 @@
+@if(content.profile|async;as p){<section class="page"><div class="eyebrow">Sobre</div><h2>{{p.name}}</h2><p class="lead">{{p.headline}}</p><div class="grid">@for(paragraph of p.about;track paragraph){<article class="card"><p>{{paragraph}}</p></article>}</div></section>}

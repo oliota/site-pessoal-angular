@@ -1,0 +1,1 @@
+import { Component, inject } from '@angular/core';import { AsyncPipe } from '@angular/common';import { ContentService } from '../../core/services/content.service';@Component({standalone:true,imports:[AsyncPipe],templateUrl:'./experience.component.html'}) export class ExperienceComponent{readonly content=inject(ContentService)}
