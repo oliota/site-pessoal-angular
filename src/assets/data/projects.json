@@ -1,43 +1,29 @@
 [
   {
-    "title": "Eliane Organizada",
-    "description": "Calendário de escalas com visualizações por mês, semana e dia, importação de escalas e integração com backend.",
-    "technologies": ["JavaScript", "Node.js", "Firebase", "Heroku"],
-    "status": "Online",
-    "link": {
-      "label": "Abrir projeto",
-      "url": "/e",
-      "type": "route",
-      "target": "same"
-    },
-    "homeScreenApp": {
-      "enabled": true,
-      "name": "Eliane Organizada",
-      "shortName": "Eliane",
-      "description": "Escala e calendário Eliane Organizada",
-      "startUrl": "/e",
-      "scope": "/",
-      "themeColor": "#6750a4",
-      "backgroundColor": "#fffbfe",
-      "icon": "/icons/eliane-512.png"
-    }
+    "name":"Eliane Organizada",
+    "description":"Aplicação web responsiva para visualizar e organizar escalas mensais, com calendário, múltiplos colaboradores, ajustes e importação estruturada de dados.",
+    "technologies":["JavaScript","Node.js","Firebase","Heroku"],
+    "status":"Em evolução",
+    "link":{"label":"Abrir projeto","url":"/e","type":"route","target":"same"},
+    "homeScreenApp":{"enabled":true,"name":"Eliane Organizada","shortName":"Eliane","startUrl":"/e","icon":"/icons/eliane-512.png"}
   },
   {
-    "title": "Silksong Wishboard Widget",
-    "description": "Desktop widget para organizar e acompanhar desejos, colecionáveis e objetivos de Silksong.",
-    "technologies": ["PowerShell", "Desktop Widget"],
-    "status": "Projeto pessoal",
-    "link": {
-      "label": "GitHub",
-      "url": "https://github.com/oliota/silksong-wishboard-widget",
-      "type": "external",
-      "target": "new"
-    },
-    "homeScreenApp": {
-      "enabled": false,
-      "name": "Silksong Wishboard",
-      "shortName": "Wishboard",
-      "startUrl": "/projects"
-    }
+    "name":"Silksong Wishboard Widget",
+    "description":"Widget desktop para organizar e acompanhar desejos, colecionáveis e objetivos em um quadro interativo personalizável.",
+    "technologies":["Desktop UI","JavaScript","GitHub"],
+    "status":"Open source",
+    "link":{"label":"GitHub","url":"https://github.com/oliota/silksong-wishboard-widget","type":"external","target":"new"}
+  },
+  {
+    "name":"4 Elementos",
+    "description":"Projeto autoral de jogo 3D com combate elemental, exploração, progressão diegética e prototipagem de sistemas em Godot.",
+    "technologies":["Godot","GDScript","3D","Game Design"],
+    "status":"Protótipo"
+  },
+  {
+    "name":"Site pessoal",
+    "description":"Esta própria experiência: portfólio modular em Angular moderno, com conteúdo desacoplado em JSON e preparado para futura integração com API.",
+    "technologies":["Angular 22","Material 3","TypeScript","JSON"],
+    "status":"v2"
   }
 ]

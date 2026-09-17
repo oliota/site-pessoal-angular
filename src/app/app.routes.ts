@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes=[
  {path:'',loadComponent:()=>import('./features/home/home.component').then(m=>m.HomeComponent)},
  {path:'e',loadComponent:()=>import('./features/external-redirect/external-redirect.component').then(m=>m.ExternalRedirectComponent)},
+ {path:'instalar',loadComponent:()=>import('./features/install-app/install-app.component').then(m=>m.InstallAppComponent)},
  {path:'experiencia',loadComponent:()=>import('./features/experience/experience.component').then(m=>m.ExperienceComponent)},
  {path:'projetos',loadComponent:()=>import('./features/projects/projects.component').then(m=>m.ProjectsComponent)},
  {path:'aulas',loadComponent:()=>import('./features/teaching/teaching.component').then(m=>m.TeachingComponent)},
